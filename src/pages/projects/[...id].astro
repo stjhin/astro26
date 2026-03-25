@@ -51,40 +51,161 @@ const { Content } = await render(project);
             </div>
 
             <div class="flex flex-col sm:flex-row gap-4">
-                <a
-                    href={project.data.githubUrl}
-                    class="w-full sm:w-auto flex items-center justify-center bg-primary rounded-2xl py-3 px-6 sm:py-4 sm:px-10 cursor-pointer hover:bg-background hover:outline hover:outline-1 hover:outline-dashed hover:outline-secondary hover:text-foreground transition"
-                >
-                    Source
-                </a>
-                <a
-                    href={project.data.liveUrl}
-                    class="w-full sm:w-auto flex items-center justify-center bg-foreground text-background rounded-2xl py-3 px-6 sm:py-4 sm:px-10 cursor-pointer hover:bg-background hover:outline hover:outline-1 hover:outline-dashed hover:outline-secondary hover:text-foreground transition"
-                >
-                    Live Demo
-                </a>
+                {project.data.githubUrl && (
+                    <a
+                        href={project.data.githubUrl}
+                        class="w-full sm:w-auto flex items-center justify-center bg-primary rounded-2xl py-3 px-6 sm:py-4 sm:px-10 cursor-pointer hover:bg-background hover:outline hover:outline-1 hover:outline-dashed hover:outline-secondary hover:text-foreground transition text-background"
+                    >
+                        Source
+                    </a>
+                )}
+
+                {project.data.liveUrl && (
+                    <a
+                        href={project.data.liveUrl}
+                        class="w-full sm:w-auto flex items-center justify-center bg-foreground text-background rounded-2xl py-3 px-6 sm:py-4 sm:px-10 cursor-pointer hover:bg-background hover:outline hover:outline-1 hover:outline-dashed hover:outline-secondary hover:text-foreground transition"
+                    >
+                        Live Demo
+                    </a>
+                )}
             </div>
         </div>
 
-        <div
-            class="w-full lg:h-[70vh] aspect-[610/400] overflow-hidden rounded-2xl"
-        >
+        <div class="w-full lg:h-[70vh] aspect-[610/400] overflow-hidden rounded-2xl">
             <img
+                id="project-hero"
                 src={project.data.image.url}
                 alt={project.data.image.alt}
-                class="w-full h-full object-contain"
+                class="w-full h-full object-contain cursor-pointer"
             />
         </div>
+
+        <!-- Fullscreen image modal -->
+        <div
+            id="image-modal"
+            class="hidden fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-6"
+            role="dialog"
+            aria-modal="true"
+        >
+            <button
+                id="modal-close"
+                class="absolute top-6 right-6 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75"
+                aria-label="Close image"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+            </button>
+
+            <img id="modal-img" src="" alt="" class="max-w-full max-h-full object-contain rounded" />
+        </div>
+
+        <!-- Tooltip for images -->
+        <div id="img-tooltip" class="hidden fixed z-60 bg-black text-white text-sm px-3 py-1 rounded pointer-events-none">View in Fullscreen</div>
         <article
-            class="px-3 flex-2 mx-auto border-b border-dashed border-secondary mb-18"
+            class="px-3 flex-2 mx-auto border-b border-dashed border-secondary mb-18 prose dark:prose-invert"
         >
             <Content />
         </article>
     </div>
 
     <script is:inline>
+        // Back button
         document.getElementById("back-button").addEventListener("click", () => {
             window.history.back();
         });
+
+        // Image modal: open when clicking the hero OR any image inside the article content.
+        const hero = document.getElementById('project-hero');
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeBtn = document.getElementById('modal-close');
+        const article = document.querySelector('article');
+
+        const openModalForImage = (img) => {
+            if (!modal || !modalImg) return;
+            modal.classList.remove('hidden');
+            // Use data-full if provided, otherwise use the img src
+            modalImg.src = img.dataset.full || img.src;
+            modalImg.alt = img.alt || '';
+            // prevent background scroll
+            document.documentElement.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';
+            // Move focus to close button for accessibility
+            if (closeBtn) closeBtn.focus();
+        };
+
+        const closeModal = () => {
+            if (!modal || !modalImg) return;
+            modal.classList.add('hidden');
+            modalImg.src = '';
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+        };
+
+        // Wire up hero image if present
+        if (hero) {
+            hero.classList.add('cursor-pointer');
+            hero.addEventListener('click', () => openModalForImage(hero));
+            // Tooltip handlers for hero
+            hero.addEventListener('mouseenter', (e) => showTooltip(e));
+            hero.addEventListener('mousemove', (e) => moveTooltip(e));
+            hero.addEventListener('mouseleave', hideTooltip);
+        }
+
+        // Wire up all content images inside the article
+        if (article) {
+            const contentImgs = article.querySelectorAll('img');
+            contentImgs.forEach((img) => {
+                // avoid wiring the modal image itself if nested
+                if (img.id === 'modal-img') return;
+                img.classList.add('cursor-pointer');
+                img.addEventListener('click', () => openModalForImage(img));
+                // Tooltip handlers for content images
+                img.addEventListener('mouseenter', (e) => showTooltip(e));
+                img.addEventListener('mousemove', (e) => moveTooltip(e));
+                img.addEventListener('mouseleave', hideTooltip);
+            });
+        }
+
+        // Close handlers
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // Tooltip functions
+        const tooltip = document.getElementById('img-tooltip');
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        function showTooltip(e) {
+            if (!tooltip || isTouch) return;
+            tooltip.classList.remove('hidden');
+            moveTooltip(e);
+        }
+
+        function moveTooltip(e) {
+            if (!tooltip || isTouch) return;
+            const padding = 12;
+            let x = e.clientX + padding;
+            let y = e.clientY + padding;
+            // keep tooltip inside viewport
+            const rect = tooltip.getBoundingClientRect();
+            if (x + rect.width > window.innerWidth) x = e.clientX - rect.width - padding;
+            if (y + rect.height > window.innerHeight) y = e.clientY - rect.height - padding;
+            tooltip.style.left = x + 'px';
+            tooltip.style.top = y + 'px';
+        }
+
+        function hideTooltip() {
+            if (!tooltip) return;
+            tooltip.classList.add('hidden');
+        }
     </script>
 </Layout>

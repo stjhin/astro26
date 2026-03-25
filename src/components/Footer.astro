@@ -1,5 +1,5 @@
 ---
-import { SITE, SOCIALS } from "@/consts";
+import { SITE, LINKS } from "@/consts";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 const Projects: CollectionEntry<"projects">[] = (
@@ -7,20 +7,20 @@ const Projects: CollectionEntry<"projects">[] = (
 ).slice(0, 3);
 ---
 
-<footer class="bg-primary container mx-auto rounded-t-[80px] p-10 space-y-8">
+<footer class="bg-primary container mx-auto rounded-t-[80px] p-10 space-y-8 site-footer">
   <div
     class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6"
   >
-    <h2 class="text-5xl lg:text-9xl uppercase">{SITE.TITLE}</h2>
-    <p class="text-2xl lg:text-3xl max-w-[760px]">
+    <h3 class="heading text-3xl md:text-5xl uppercase" style="color: var(--color-background)">{SITE.TITLE}</h3>
+    <p class="text-xl lg:text-2xl max-w-[760px]" style="color: var(--color-background)">
       Simplicity is the ultimate sophistication — especially in design.
     </p>
   </div>
   <div class="flex flex-col sm:flex-row sm:flex-wrap justify-between gap-10">
     
     <div>
-      <h3 class="mb-2 text-xl">Navigation</h3>
-      <ul class="space-y-1 text-secondary">
+  <h3 class="mb-2 text-xl text-background">Navigation</h3>
+      <ul class="space-y-1 text-secondary nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/blog">Blog</a></li>
@@ -29,10 +29,10 @@ const Projects: CollectionEntry<"projects">[] = (
       </ul>
     </div>
     <div>
-      <h3 class="mb-2 text-xl">Socials</h3>
-      <ul class="space-y-1 text-secondary">
+  <h3 class="mb-2 text-xl text-background">Links</h3>
+        <ul class="space-y-1 text-secondary nav-links">
         {
-          SOCIALS.map((link) => (
+          LINKS.map((link) => (
             <li>
               <a href={link.HREF}>{link.NAME}</a>
             </li>
@@ -41,8 +41,8 @@ const Projects: CollectionEntry<"projects">[] = (
       </ul>
     </div>
     <div>
-      <h3 class="mb-2 text-xl">Projects</h3>
-      <ul class="space-y-1 text-secondary">
+  <h3 class="mb-2 text-xl text-background">Projects</h3>
+        <ul class="space-y-1 text-secondary nav-links">
         {
           Projects.map((project) => (
             <li>
@@ -53,7 +53,33 @@ const Projects: CollectionEntry<"projects">[] = (
       </ul>
     </div>
   </div>
-  <span class="block text-center text-sm opacity-70">
+  <span class="block text-center text-sm opacity-70 text-background">
     © {SITE.TITLE}.
   </span>
 </footer>
+
+<style>
+  .site-footer a {
+    color: var(--color-tertiary);
+  }
+
+  /* Navigation links in the footer should use the background color token */
+  .site-footer .nav-links a {
+    color: var(--color-background);
+  }
+  /* Ensure nav-links explicitly change to foreground on hover */
+  .site-footer .nav-links a:hover {
+    color: var(--color-foreground);
+  }
+
+  .site-footer a:hover {
+    color: var(--color-foreground);
+  }
+
+  /* Prevent hover color changes on non-anchor elements that use .text-background
+     We want hover/focus color swaps only for actual links (<a>), not headings or spans. */
+  .site-footer .text-background:not(a):hover,
+  .site-footer .text-background:not(a):focus {
+    color: var(--color-background);
+  }
+</style>

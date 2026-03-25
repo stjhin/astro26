@@ -2,7 +2,7 @@ export const SITE = {
   URL: "https://stjhin.com",
   TITLE: "Silvialy Tjhin",
   DESCRIPTION:
-    "A product designer with a passion for creating intuitive and engaging user experiences.",
+    "A product designer with a passion for connecting business goals with user needs.",
   EMAIL: "silvia@stjhin.com",
 };
 
@@ -15,7 +15,7 @@ export const HOME = {
 export const BLOG = {
   TITLE: "Blog",
   DESCRIPTION:
-    "A collection of articles on programming, projects and other stuff",
+    "A collection of articles",
 };
 
 export const PROJECTS = {
@@ -24,7 +24,7 @@ export const PROJECTS = {
     "A collection of my projects.",
 };
 
-export const SOCIALS = [
+export const LINKS = [
   {
     NAME: "Resume",
     HREF: "https://drive.google.com/file/d/1XN80FbybY8vSbWDNBZfreZGZWgx_Etdu/view?usp=sharing",

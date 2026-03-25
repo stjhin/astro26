@@ -13,7 +13,10 @@ const { title, description, image = "/placeholder.png" } = Astro.props;
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" href="/favicon-32x32.png" />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Primary Meta Tags -->
@@ -22,5 +25,30 @@ const { title, description, image = "/placeholder.png" } = Astro.props;
 <meta name="description" content={description} />
 
 <!-- fonts -->
-<Font cssVariable="--font-plex" preload />
-<Font cssVariable="--font-geist" preload />
+<!-- Theme preloader: apply saved theme before paint to avoid flash -->
+<script>
+(function(){
+    const storageKey = 'site-theme';
+    const className = 'dark';
+    function apply(t){
+        if(t==='dark') document.documentElement.classList.add(className);
+        else document.documentElement.classList.remove(className);
+    }
+    const saved = (function(){ try{ return localStorage.getItem(storageKey) }catch(e){return null} })();
+    if(saved){ apply(saved); }
+    else {
+        try{
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            apply(prefersDark ? 'dark' : 'light');
+        }catch(e){}
+    }
+    window.toggleTheme = function(){
+        const html = document.documentElement;
+        const isDark = html.classList.toggle(className);
+        try{ localStorage.setItem(storageKey, isDark ? 'dark' : 'light'); }catch(e){}
+        return isDark ? 'dark' : 'light';
+    };
+})();
+</script>
+<Font cssVariable="--font-mono" preload />
+<Font cssVariable="--font-sans" preload />

@@ -13,13 +13,13 @@ export default defineConfig({
   },
   fonts: [
     {
-      name: "IBM Plex Mono",
-      cssVariable: "--font-plex",
+      name: "Roboto Mono",
+      cssVariable: "--font-mono",
       provider: fontProviders.google(),
     },
     {
-      name: "Geist",
-      cssVariable: "--font-geist",
+      name: "Noto Sans",
+      cssVariable: "--font-sans",
       provider: fontProviders.google(),
     },
   ],

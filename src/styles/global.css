@@ -4,30 +4,190 @@
 
 @theme {
   /* fonts */
-  --font-plex: "IBM Plex Mono", monospace;
-  --font-geist: "Geist", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
+  --font-sans: "Noto Sans", sans-serif;
 
   /* colors */
-  --color-primary: oklch(86.89 0.29 142.02); /* #27FF0B*/
-  --color-background: oklch(99.7 0 0); /* #fefefe */
-  --color-foreground: oklch(0 0 0); /* #000000 */
-  --color-secondary: oklch(0.38 0 1); /* #434343*/
+  --color-primary: rgb(18, 10, 143); /* #120a8f */
+  --color-background: rgb(254, 254, 254); /* #fefefe white bg*/
+  --color-foreground: rgb(0, 7, 27); /* #00071B Navy*/
+  --color-secondary: rgb(96, 115, 142); /* #60738e light grey*/
+  --color-tertiary: rgb(138, 154, 176); /* #8a9ab0 dark grey*/
+  /* background pattern dot color (used by Layout.astro radial gradient). */
+  --pattern-dot: rgba(0, 7, 27, 0.20);
+}
+
+/* Dark mode token overrides */
+html.dark {
+  --color-background: rgb(10, 12, 18);    /* dark page background */
+  --color-foreground: rgb(230, 230, 235); /* light text on dark */
+  --color-primary: rgb(90, 80, 240);      /* accent for dark */
+  --color-secondary: rgb(120, 130, 150);
+  --color-tertiary: rgb(110, 120, 140);
+  /* subtle light dots on dark background */
+  --pattern-dot: rgba(255, 255, 255, 0.06);
 }
 
 .heading {
-  @apply font-plex tracking-[-2%] font-bold;
+  /* Replaced Tailwind @apply with equivalent plain CSS */
+  font-family: var(--font-mono);
+  /* approximate tracking -2% */
+  letter-spacing: -0.02em;
+  font-weight: 700;
 }
 
 html {
-  @apply scroll-smooth;
+  /* scroll-smooth (Tailwind) */
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply font-geist text-foreground bg-background;
+  font-family: var(--font-sans);
+  color: var(--color-foreground);
+  background-color: var(--color-background);
 }
 
 article {
-  @apply prose prose-neutral prose-img:mx-auto prose-img:my-auto text-lg leading-8;
-  @apply prose-headings:font-bold prose-headings:font-plex prose-headings:text-foreground mx-auto;
-  @apply text-secondary prose-a:underline-offset-2;
+  /* Lightweight replacement for Tailwind Typography's prose utilities.
+     This keeps layout and readable defaults without requiring @apply processing.
+  */
+  max-width: min(88ch, 90vw);
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--color-secondary);
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75;
+}
+
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--color-foreground);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+article img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  max-width: 100%;
+}
+
+article a {
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+  color: inherit;
+}
+
+/* Blockquote styling so Markdown '>' is visually distinct. */
+article blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: var(--color-foreground);
+  font-style: italic;
+  background-color: transparent;
+}
+
+article blockquote p {
+  margin: 0;
+}
+
+/* Markdown table styling: readable, with responsive horizontal scroll on small screens. */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  display: block; /* enable horizontal scroll on narrow viewports */
+  overflow-x: auto;
+}
+
+article table thead th {
+  font-weight: 700;
+  text-align: left;
+}
+
+article table th,
+article table td {
+  padding: 0.5rem 0.75rem;
+  /* Use theme-aware tokens so borders show in both light and dark modes */
+  border-bottom: 1px solid var(--color-tertiary);
+  text-align: left;
+  vertical-align: top;
+  color: var(--color-foreground);
+  background-color: transparent;
+}
+
+/* Stronger header rule using tokenized color for dark-mode compatibility */
+article table thead th {
+  border-bottom: 2px solid var(--color-secondary);
+}
+
+/* On wider screens use native table layout */
+@media (min-width: 768px) {
+  article table {
+    display: table;
+    overflow: visible;
+  }
+}
+
+/* Ensure basic list markers appear even if prose classes are not present. */
+article ul,
+article ol {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-inline-start: 1.5rem;
+}
+
+article ul li::marker {
+  color: var(--color-foreground);
+}
+
+article ol li::marker {
+  color: var(--color-foreground);
+}
+
+/* utility to set default text to the background color and switch to foreground on hover */
+.text-background {
+  color: var(--color-background);
+  transition: color .15s ease;
+}
+.text-background:hover,
+.text-background:focus {
+  color: var(--color-foreground);
+}
+
+/* Theme toggle button styles */
+#theme-toggle {
+  transition: background-color .15s ease, color .15s ease, transform .15s ease;
+}
+
+#theme-toggle:focus {
+  /* use outline previously, but allow user to disable border entirely if desired */
+  outline: none;
+  box-shadow: none;
+  transform: translateY(-1px);
+}
+
+#theme-toggle svg { display: block; }
+
+/* Match mobile toggle if present */
+#theme-toggle-mobile:focus {
+  outline: none;
+  box-shadow: none;
+  transform: translateY(-1px);
+}
+
+/* Background pattern: move inline layout style here so it follows theme tokens and is centrally managed */
+.site-pattern {
+  background-image: radial-gradient(circle at 1px 1px, var(--pattern-dot) 1px, transparent 0);
+  background-size: 25px 25px;
 }

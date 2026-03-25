@@ -1,7 +1,7 @@
 ---
 title: "About This Template"
 description: "A README-style post that explains how to use and customize the blog template."
-date: "2025-02-26"
+date: "2026-02-26"
 tags:
   - Docs
   - Template
@@ -53,11 +53,11 @@ Each project needs **frontmatter** at the top, like this:
 
 ```yaml
 ---
-title: "FormSync"
-description: "Serverless forms with instant email notifications, reCAPTCHA, and zero backend. Just drop in a <form>."
+title: "Infinity"
+description: "Design system with MCP automation for AI workflow end-to-end pipeline."
 liveUrl: https://example.com
 githubUrl: https://github.com
-image: { url: "/formsync.jpeg", alt: "FormSync thumbnail" }
+image: { url: "/infinity-hero.png", alt: "Infinity thumbnail" }
 ---
 ```
 

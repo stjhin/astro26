@@ -9,24 +9,24 @@ const allPosts: CollectionEntry<"blog">[] = (await getCollection("blog"))
   .slice(0, 3);
 ---
 
-<section id="Projects" class="container mx-auto px-6 mt-18">
+<section id="Posts" class="container mx-auto px-6 mt-18">
   <div class="overflow-hidden mb-12">
     <div class="flex animate-scroll">
       <div class="flex shrink-0 whitespace-nowrap">
         {
           Array.from({ length: 10 }).map((_) => (
-            <h2 class="heading text-5xl md:text-9xl uppercase mr-4 md:mr-8 -mb-2">
+            <h3 class="heading text-3xl md:text-5xl uppercase mr-4 md:mr-8 mb-0">
               Posts
-            </h2>
+            </h3>
           ))
         }
       </div>
       <div class="flex shrink-0 whitespace-nowrap" aria-hidden="true">
         {
           Array.from({ length: 10 }).map((_) => (
-            <h2 class="heading text-5xl md:text-9xl uppercase mr-4 md:mr-8 -mb-2">
+            <h3 class="heading text-3xl md:text-5xl uppercase mr-4 md:mr-8 mb-0">
               Posts
-            </h2>
+            </h3>
           ))
         }
       </div>
