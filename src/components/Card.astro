@@ -8,6 +8,12 @@ type Props = {
 const { entry } = Astro.props as {
     entry: CollectionEntry<"projects">;
 };
+const withBase = (path: string) => {
+    const base = import.meta.env.BASE_URL.endsWith("/")
+        ? import.meta.env.BASE_URL
+        : `${import.meta.env.BASE_URL}/`;
+    return `${base}${path.replace(/^\/+/, "")}`;
+};
 ---
 
 <script>
@@ -72,7 +78,7 @@ const { entry } = Astro.props as {
 
 <a
     class="group relative flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 mb-8 pb-8 border-dashed border-b border-b-secondary cursor-pointer"
-    href={`/${entry.collection}/${entry.id}`}
+    href={withBase(`/${entry.collection}/${entry.id}`)}
 >
     <div
         id="cursor-circle"
@@ -98,8 +104,9 @@ const { entry } = Astro.props as {
         class="w-full md:max-w-[610px] aspect-[610/400] overflow-hidden border-dashed border-secondary rounded-3xl"
     >
         <img
-            src={entry.data.image?.url ||
-                `https://placehold.co/600x400?text=${entry.data.title}`}
+            src={entry.data.image?.url
+                ? withBase(entry.data.image.url)
+                : `https://placehold.co/600x400?text=${entry.data.title}`}
             alt={entry.data.image?.alt || entry.data.title}
             class="w-full h-full object-cover"
         />

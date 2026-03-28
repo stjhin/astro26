@@ -1,6 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { SITE } from "@/consts";
+const homeUrl = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
 ---
 
 <Layout title={SITE.TITLE} description={SITE.DESCRIPTION}>
@@ -9,6 +12,6 @@ import { SITE } from "@/consts";
         <p class="text-secondary">
             What you seek never existed, or perhaps has ceased to exist.
         </p>
-        <a href="/" class="cursor-pointer underline">&larr; Go Back</a>
+            <a href={homeUrl} class="cursor-pointer underline">&larr; Go Back</a>
     </main>
 </Layout>

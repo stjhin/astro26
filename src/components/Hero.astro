@@ -1,5 +1,11 @@
 ---
 import { SITE } from "@/consts";
+const withBase = (path: string) => {
+    const base = import.meta.env.BASE_URL.endsWith("/")
+        ? import.meta.env.BASE_URL
+        : `${import.meta.env.BASE_URL}/`;
+    return `${base}${path.replace(/^\/+/, "")}`;
+};
 ---
 
 <section
@@ -15,7 +21,7 @@ import { SITE } from "@/consts";
         <div class="flex flex-col md:flex-row gap-2.5">
             <a
                 class="w-full sm:w-auto flex items-center justify-center bg-primary rounded-2xl py-3 px-6 sm:py-4 sm:px-10 cursor-pointer hover:bg-background hover:outline hover:outline-1 hover:outline-dashed hover:outline-secondary hover:text-foreground transition text-background"
-                href="/projects">View Work</a
+                href={withBase("/projects")}>View Work</a
             >
             <a
                 class="w-full sm:w-auto flex items-center justify-center bg-foreground text-background rounded-2xl py-3 px-6 sm:py-4 sm:px-10 cursor-pointer hover:bg-background hover:outline hover:outline-1 hover:outline-dashed hover:outline-secondary hover:text-foreground transition"

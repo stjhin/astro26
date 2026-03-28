@@ -6,17 +6,23 @@ const nameParts = SITE.TITLE.split(/\s+/).filter(Boolean);
 const firstInitial = nameParts[0] ? nameParts[0].charAt(0) : "";
 const lastInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
 const initials = (firstInitial + (lastInitial ? "." + lastInitial : "")).toUpperCase();
+const withBase = (path: string) => {
+    const base = import.meta.env.BASE_URL.endsWith("/")
+        ? import.meta.env.BASE_URL
+        : `${import.meta.env.BASE_URL}/`;
+    return `${base}${path.replace(/^\/+/, "")}`;
+};
 
 const links = [
-    { name: "Home", href: "/", target: "_self" },
-    { name: "About", href: "/about", target: "_self" },
-    { name: "Work", href: "/projects", target: "_self" },
+    { name: "Home", href: withBase("/"), target: "_self" },
+    { name: "About", href: withBase("/about"), target: "_self" },
+    { name: "Work", href: withBase("/projects"), target: "_self" },
 ];
 ---
 
 <header class="fixed top-0 w-full z-50">
     <div class="container mx-auto flex items-center justify-between p-6">
-    <a href="/" class="font-bold font-mono text-4xl">{initials}.</a>
+    <a href={withBase("/")} class="font-bold font-mono text-4xl">{initials}.</a>
         <nav class="space-x-3 text-secondary hidden md:block">
             {
                 links.map((link) => (
@@ -119,6 +125,7 @@ const links = [
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
+        const win = window as Window & { toggleTheme?: () => 'dark' | 'light' };
         const menuMobile = document.getElementById("menu-mobile");
         const toggle = document.getElementById("menu-toggle");
         toggle?.addEventListener("click", () => {
@@ -146,7 +153,7 @@ const links = [
                 themeBtnMobile.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
                 themeBtnMobile.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
             }
-            function setIcon(el, mobile){
+            function setIcon(el: SVGElement | null){
                 if(!el) return;
                 if(isDark){
                     el.innerHTML = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor" stroke="none"></path>';
@@ -154,19 +161,19 @@ const links = [
                     el.innerHTML = '\n                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>\n                        <g stroke="currentColor" stroke-width="2" stroke-linecap="round">\n                          <path d="M12 2v2"></path>\n                          <path d="M12 20v2"></path>\n                          <path d="M4.22 4.22l1.42 1.42"></path>\n                          <path d="M18.36 18.36l1.42 1.42"></path>\n                          <path d="M2 12h2"></path>\n                          <path d="M20 12h2"></path>\n                          <path d="M4.22 19.78l1.42-1.42"></path>\n                          <path d="M18.36 5.64l1.42-1.42"></path>\n                        </g>';
                 }
             }
-            setIcon(themeIcon, false);
-            setIcon(themeIconMobile, true);
+            setIcon(themeIcon as SVGElement | null);
+            setIcon(themeIconMobile as SVGElement | null);
         }
 
         if(themeBtn){
             themeBtn.addEventListener('click', () => {
-                window.toggleTheme && window.toggleTheme();
+                win.toggleTheme?.();
                 updateThemeButton();
             });
         }
         if(themeBtnMobile){
             themeBtnMobile.addEventListener('click', () => {
-                window.toggleTheme && window.toggleTheme();
+                win.toggleTheme?.();
                 updateThemeButton();
             });
         }

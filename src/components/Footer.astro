@@ -5,6 +5,12 @@ import { getCollection, type CollectionEntry } from "astro:content";
 const Projects: CollectionEntry<"projects">[] = (
   await getCollection("projects")
 ).slice(0, 3);
+const withBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
 ---
 
 <footer class="bg-primary container mx-auto rounded-t-[80px] p-10 space-y-8 site-footer">
@@ -21,9 +27,9 @@ const Projects: CollectionEntry<"projects">[] = (
     <div>
   <h3 class="mb-2 text-xl text-background">Navigation</h3>
       <ul class="space-y-1 text-secondary nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/projects">Projects</a></li>
+        <li><a href={withBase("/")}>Home</a></li>
+        <li><a href={withBase("/about")}>About</a></li>
+        <li><a href={withBase("/projects")}>Projects</a></li>
         
       </ul>
     </div>
@@ -45,7 +51,7 @@ const Projects: CollectionEntry<"projects">[] = (
         {
           Projects.map((project) => (
             <li>
-                <a href=`/projects/${project.id}`>{project.data.title}</a>
+                <a href={withBase(`/projects/${project.id}`)}>{project.data.title}</a>
             </li>
           ))
         }
