@@ -55,6 +55,11 @@
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     let galleryImages = [];
     let currentIndex = -1;
+    const isProjectDetailPage = () => {
+        // Base-path-safe detection for project detail pages (works for /projects/... and /<base>/projects/...).
+        if (document.getElementById('project-hero')) return true;
+        return /\/projects\/[^/]+\/?$/.test(window.location.pathname);
+    };
 
     const updateNavButtons = () => {
         const showNav = galleryImages.length > 1;
@@ -77,7 +82,7 @@
         modal.classList.remove('hidden');
 
         // Determine gallery set: for project detail pages, include hero + all project article images.
-        if (window.location.pathname.startsWith('/projects/')) {
+        if (isProjectDetailPage()) {
             const hero = document.getElementById('project-hero');
             const articleImgs = Array.from(document.querySelectorAll('article img')).filter((i) => i.id !== 'modal-img');
             const set = [hero, ...articleImgs].filter(Boolean);
@@ -110,7 +115,7 @@
 
     // Wire up images that opt-in
     const attachImageModal = () => {
-        const projectImgs = window.location.pathname.startsWith('/projects/')
+        const projectImgs = isProjectDetailPage()
             ? Array.from(document.querySelectorAll('#project-hero, article img'))
             : [];
 
