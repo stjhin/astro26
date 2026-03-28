@@ -12,12 +12,6 @@ export const HOME = {
     "A personal portfolio website of Silvialy Tjhin",
 };
 
-export const BLOG = {
-  TITLE: "Blog",
-  DESCRIPTION:
-    "A collection of articles",
-};
-
 export const PROJECTS = {
   TITLE: "Projects",
   DESCRIPTION:

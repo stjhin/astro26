@@ -9,6 +9,14 @@
     aria-modal="true"
 >
     <button
+        id="modal-prev"
+        class="hidden absolute left-4 md:left-6 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75"
+        aria-label="Previous image"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
+    </button>
+
+    <button
         id="modal-close"
         class="absolute top-6 right-6 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75"
         aria-label="Close image"
@@ -17,6 +25,14 @@
     </button>
 
     <img id="modal-img" src="" alt="" class="max-w-full max-h-full object-contain rounded" />
+
+    <button
+        id="modal-next"
+        class="hidden absolute right-4 md:right-6 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75"
+        aria-label="Next image"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
 </div>
 
 <!-- Tooltip for images -->
@@ -33,14 +49,46 @@
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-img');
     const closeBtn = document.getElementById('modal-close');
+    const prevBtn = document.getElementById('modal-prev');
+    const nextBtn = document.getElementById('modal-next');
     const tooltip = document.getElementById('img-tooltip');
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    let galleryImages = [];
+    let currentIndex = -1;
+
+    const updateNavButtons = () => {
+        const showNav = galleryImages.length > 1;
+        if (prevBtn) prevBtn.classList.toggle('hidden', !showNav);
+        if (nextBtn) nextBtn.classList.toggle('hidden', !showNav);
+    };
+
+    const showImageAt = (index) => {
+        if (!galleryImages.length || !modalImg) return;
+        const normalized = (index + galleryImages.length) % galleryImages.length;
+        currentIndex = normalized;
+        const img = galleryImages[normalized];
+        modalImg.src = img.dataset.full || img.src;
+        modalImg.alt = img.alt || '';
+        updateNavButtons();
+    };
 
     const openModalForImage = (img) => {
         if (!modal || !modalImg) return;
         modal.classList.remove('hidden');
-        modalImg.src = img.dataset.full || img.src;
-        modalImg.alt = img.alt || '';
+
+        // Determine gallery set: for project detail pages, include hero + all project article images.
+        if (window.location.pathname.startsWith('/projects/')) {
+            const hero = document.getElementById('project-hero');
+            const articleImgs = Array.from(document.querySelectorAll('article img')).filter((i) => i.id !== 'modal-img');
+            const set = [hero, ...articleImgs].filter(Boolean);
+            galleryImages = Array.from(new Set(set));
+        } else {
+            galleryImages = [img];
+        }
+
+        const clickedIndex = galleryImages.indexOf(img);
+        showImageAt(clickedIndex >= 0 ? clickedIndex : 0);
+
         document.documentElement.style.overflow = 'hidden';
         document.body.style.overflow = 'hidden';
         if (closeBtn) closeBtn.focus();
@@ -52,11 +100,23 @@
         modalImg.src = '';
         document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
+        galleryImages = [];
+        currentIndex = -1;
+        updateNavButtons();
     };
+
+    const showPrev = () => showImageAt(currentIndex - 1);
+    const showNext = () => showImageAt(currentIndex + 1);
 
     // Wire up images that opt-in
     const attachImageModal = () => {
-        const imgs = document.querySelectorAll('img[data-full], img[data-modalable], img.modal-image, img.clickable-hero');
+        const projectImgs = window.location.pathname.startsWith('/projects/')
+            ? Array.from(document.querySelectorAll('#project-hero, article img'))
+            : [];
+
+        const optInImgs = Array.from(document.querySelectorAll('img[data-full], img[data-modalable], img.modal-image, img.clickable-hero'));
+        const imgs = Array.from(new Set([...projectImgs, ...optInImgs]));
+
         imgs.forEach((img) => {
             if (img.id === 'modal-img') return; // skip nested modal image if any
             img.classList.add('cursor-pointer');
@@ -71,15 +131,18 @@
 
     // Close handlers
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (prevBtn) prevBtn.addEventListener('click', showPrev);
+    if (nextBtn) nextBtn.addEventListener('click', showNext);
     if (modal) {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
     }
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
-            closeModal();
-        }
+        if (!modal || modal.classList.contains('hidden')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft' && galleryImages.length > 1) showPrev();
+        if (e.key === 'ArrowRight' && galleryImages.length > 1) showNext();
     });
 
     // Tooltip helpers

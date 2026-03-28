@@ -37,10 +37,8 @@ const { title, description, image = "/placeholder.png" } = Astro.props;
     const saved = (function(){ try{ return localStorage.getItem(storageKey) }catch(e){return null} })();
     if(saved){ apply(saved); }
     else {
-        try{
-            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            apply(prefersDark ? 'dark' : 'light');
-        }catch(e){}
+        // Default first visit to dark mode when no preference has been saved yet.
+        apply('dark');
     }
     window.toggleTheme = function(){
         const html = document.documentElement;
