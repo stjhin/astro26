@@ -113,6 +113,16 @@
     const showPrev = () => showImageAt(currentIndex - 1);
     const showNext = () => showImageAt(currentIndex + 1);
 
+    const isModalImageCandidate = (img) => {
+        if (!(img instanceof HTMLImageElement)) return false;
+        if (img.id === 'modal-img') return false;
+
+        const isOptIn = img.matches('img[data-full], img[data-modalable], img.modal-image, img.clickable-hero');
+        const isProjectImage = isProjectDetailPage() && (img.matches('#project-hero') || !!img.closest('article'));
+
+        return isOptIn || isProjectImage;
+    };
+
     // Wire up images that opt-in
     const attachImageModal = () => {
         const projectImgs = isProjectDetailPage()
@@ -125,7 +135,6 @@
         imgs.forEach((img) => {
             if (img.id === 'modal-img') return; // skip nested modal image if any
             img.classList.add('cursor-pointer');
-            img.addEventListener('click', () => openModalForImage(img));
             if (!isTouch) {
                 img.addEventListener('mouseenter', (e) => showTooltip(e));
                 img.addEventListener('mousemove', (e) => moveTooltip(e));
@@ -133,6 +142,17 @@
             }
         });
     };
+
+    // Delegated click handler is more reliable when images are injected or rewritten after load.
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (!(target instanceof Element)) return;
+
+        const img = target.closest('img');
+        if (!isModalImageCandidate(img)) return;
+
+        openModalForImage(img);
+    });
 
     // Close handlers
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
