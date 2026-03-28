@@ -1,8 +1,8 @@
 ---
 title: "Infinity Design System"
 description: "Design system with MCP automation for AI workflow end-to-end pipeline."
-liveUrl: https://github.com/stjhin/infinity
-# githubUrl: https://github.com/stjhin/infinity
+liveUrl: https://stjhin.github.io/infinity
+# githubUrl:
 image: {
 	url: "/infinity-hero.png",
 	alt: "Infinity thumbnail"
@@ -49,7 +49,7 @@ Because it is a new technology, we had to spend more time with experimentation a
 
 ## Live Demos
 
-- 🔗 [Storybook Demo](https://github.com/stjhin/infinity)
+- 🔗 [Storybook Demo](https://stjhin.github.io/infinity)
 
 ---
 
