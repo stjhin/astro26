@@ -4,7 +4,7 @@
 
 ## 🚀 Hello World
 
-### [Live Site](https://stjhin.com/)
+### [Live Site](https://stjhin.github.io/astro26/)
 
 ## ✍️ Description
 
