@@ -1,7 +1,7 @@
 ---
 title: "Pluto"
 description: "Drone management software for medical equipment deliveries."
-# liveUrl: https://example.com
+liveUrl: https://stjhin.github.io/pluto/
 # githubUrl: https://github.com
 image: {
 url: "/pluto-hero.png",
