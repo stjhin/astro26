@@ -12,7 +12,7 @@
   --color-background: rgb(254, 254, 254); /* #fefefe white bg*/
   --color-foreground: rgb(0, 7, 27); /* #00071B Navy*/
   --color-secondary: rgb(96, 115, 142); /* #60738e light grey*/
-  --color-tertiary: rgb(138, 154, 176); /* #8a9ab0 dark grey*/
+  --color-tertiary: rgb(100, 115, 140); /* #64738C — 4.89:1 on white (was #8a9ab0 at 3.08:1) */
   /* background pattern dot color (used by Layout.astro radial gradient). */
   --pattern-dot: rgba(0, 7, 27, 0.20);
 }
@@ -21,9 +21,9 @@
 html.dark {
   --color-background: rgb(10, 12, 18);    /* dark page background */
   --color-foreground: rgb(230, 230, 235); /* light text on dark */
-  --color-primary: rgb(90, 80, 240);      /* accent for dark */
+  --color-primary: rgb(130, 120, 245);    /* #8278F5 — 5.39:1 on dark bg (was #5A50F0 at 3.65:1) */
   --color-secondary: rgb(120, 130, 150);
-  --color-tertiary: rgb(110, 120, 140);
+  --color-tertiary: rgb(130, 140, 160);   /* #828CA0 — 5.46:1 on dark bg (was #6E788C at 4.27:1) */
   /* subtle light dots on dark background */
   --pattern-dot: rgba(255, 255, 255, 0.06);
 }
@@ -82,6 +82,7 @@ article img {
 }
 
 article a {
+  text-decoration: underline;
   text-underline-offset: 2px;
   text-decoration-thickness: 2px;
   color: inherit;
@@ -170,19 +171,18 @@ article ol li::marker {
   transition: background-color .15s ease, color .15s ease, transform .15s ease;
 }
 
-#theme-toggle:focus {
-  /* use outline previously, but allow user to disable border entirely if desired */
-  outline: none;
-  box-shadow: none;
+#theme-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
   transform: translateY(-1px);
 }
 
 #theme-toggle svg { display: block; }
 
 /* Match mobile toggle if present */
-#theme-toggle-mobile:focus {
-  outline: none;
-  box-shadow: none;
+#theme-toggle-mobile:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
   transform: translateY(-1px);
 }
 
@@ -190,4 +190,41 @@ article ol li::marker {
 .site-pattern {
   background-image: radial-gradient(circle at 1px 1px, var(--pattern-dot) 1px, transparent 0);
   background-size: 25px 25px;
+}
+
+/* ── Accessibility ────────────────────────────────────────────── */
+
+/* Visible focus ring for all interactive elements (WCAG 2.4.7) */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Respect user motion preferences (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skip-to-content link — hidden until focused (WCAG 2.4.1) */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-primary);
+  color: var(--color-background);
+  font-weight: 700;
+  border-radius: 0 0 0.5rem 0.5rem;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0;
 }

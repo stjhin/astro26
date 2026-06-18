@@ -4,8 +4,8 @@ import Layout from "@/layouts/Layout.astro";
 import { SITE } from "@/consts";
 ---
 
-<Layout title={SITE.TITLE} description={SITE.DESCRIPTION}>
+<Layout title="About" description={`About ${SITE.TITLE} — product designer and systems thinker.`}>
     <section class="pt-18">
-        <AboutMe />
+        <AboutMe headingLevel={1} />
     </section>
 </Layout>

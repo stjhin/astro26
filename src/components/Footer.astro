@@ -13,7 +13,7 @@ const withBase = (path: string) => {
 };
 ---
 
-<footer class="bg-primary container mx-auto rounded-t-[80px] p-10 space-y-8 site-footer">
+<footer class="bg-primary container mx-auto rounded-t-[80px] p-10 space-y-8 site-footer" role="contentinfo">
   <div
     class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6"
   >
@@ -59,27 +59,31 @@ const withBase = (path: string) => {
       </ul>
     </div>
   </div>
-  <span class="block text-center text-sm opacity-70 text-background">
+  <span class="block text-center text-sm text-background">
     © {SITE.TITLE}.
   </span>
 </footer>
 
 <style>
   .site-footer a {
-    color: var(--color-tertiary);
+    color: var(--color-background);
   }
 
   /* Navigation links in the footer should use the background color token */
   .site-footer .nav-links a {
     color: var(--color-background);
   }
-  /* Ensure nav-links explicitly change to foreground on hover */
-  .site-footer .nav-links a:hover {
-    color: var(--color-foreground);
+  /* Use underline on hover instead of color change — preserves WCAG contrast */
+  .site-footer .nav-links a:hover,
+  .site-footer .nav-links a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
-  .site-footer a:hover {
-    color: var(--color-foreground);
+  .site-footer a:hover,
+  .site-footer a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   /* Prevent hover color changes on non-anchor elements that use .text-background

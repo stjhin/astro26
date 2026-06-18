@@ -12,9 +12,9 @@ const withBase = (path: string) => {
 
 <section class="resume container mx-auto pt-18 p-6">
   <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-    <h2 class="heading text-5xl md:text-9xl uppercase">
+    <h1 class="heading text-5xl md:text-9xl uppercase">
       Resume
-    </h2>
+    </h1>
     <a
       href={withBase("/Resume-June2026.pdf")}
       download
@@ -38,5 +38,5 @@ const withBase = (path: string) => {
   </div>
   <hr class="my-16 border-secondary/30" />
 
-  <Skills />
+  <Skills headingLevel={2} />
 </section>

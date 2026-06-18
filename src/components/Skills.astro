@@ -4,6 +4,8 @@ export interface Props {
   title?: string;
   /** Groups of skills — each group is an array of skill names */
   groups?: string[][];
+  /** Semantic heading level (default 3) */
+  headingLevel?: 2 | 3;
 }
 
 const {
@@ -28,11 +30,18 @@ const {
       "MCP Servers Integration",
     ],
   ],
+  headingLevel = 3,
 } = Astro.props;
 ---
 
 <section id="Skills" class="mt-12">
-  <h3 class="heading text-3xl md:text-5xl uppercase mb-10">{title}</h3>
+  {
+    headingLevel === 2 ? (
+      <h2 class="heading text-3xl md:text-5xl uppercase mb-10">{title}</h2>
+    ) : (
+      <h3 class="heading text-3xl md:text-5xl uppercase mb-10">{title}</h3>
+    )
+  }
   <div class="space-y-6">
     {
       groups.map((skills) => (
