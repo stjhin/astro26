@@ -2,7 +2,7 @@ export const SITE = {
   URL: "https://stjhin.com",
   TITLE: "Silvialy Tjhin",
   DESCRIPTION:
-    "A product designer with a passion for connecting business goals with user needs while delivering shippable solutions.",
+    "Product Designer • Design Systems Lead • 0→1 Product Launches",
   EMAIL: "silvia@stjhin.com",
 };
 

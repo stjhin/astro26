@@ -68,7 +68,7 @@ We analyzed the current manual flow from end-to-end of how much steps it takes t
 
 ![](/pluto-3.png)
 
-## Metric Result
+## Outcomes
 
 - 30000+ Drone delivery within 3 months of launch
 - 50% Lagging indicator reduction within 6 months of launch

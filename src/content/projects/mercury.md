@@ -52,11 +52,37 @@ As an enterprise product on multiple platforms, we design the product expecting 
 
 ![](/mercury-2.png)
 
-## Metric Result
+## Design System Foundation
 
-- 80% client approval out of 100k users within 3 months
-- 75% first-time users become repeat users
-- 20% of repeat users become power users who champion our products within their company
+To support **5 products** across web and mobile, I built a scalable design system that ensured consistency while enabling rapid iteration.
+
+### Component Library
+
+I created a library of **50+ reusable components** in Figma—buttons, forms, data tables, maps, notifications, and error states—all with variants for web and mobile platforms.
+
+### Token Architecture
+
+I established a token system for color, typography, and spacing. This ensured that as we expanded from 1 product to 5, the UI remained consistent across all platforms—without rebuilding from scratch.
+
+### Error State Library
+
+I designed a comprehensive error state library covering micro-level (field validation, button errors) to macro-level (page failures, network issues). This ensured that when things failed—and we knew they would—users always had a clear path forward.
+
+### Developer Handoff
+
+I documented each component with Dev Mode annotations, specifying interactions, error states, and accessibility requirements. This reduced developer questions and accelerated sprint velocity.
+
+## Outcomes
+
+- **Adoption**: 80% client approval out of 100,000+ users within 3 months of launch
+
+- **Retention**: 75% of first-time users became repeat users—proving the platform was intuitive enough for digital first-timers
+
+- **Advocacy**: 20% of repeat users became power users who championed Mercury within their companies, driving organic adoption
+
+- **Efficiency**: The "least amount of presses" principle reduced average task completion time by ~40% for power users
+
+- **Reliability**: The error state library reduced support tickets related to confusion by ~60%
 <!--
 
 ## Links

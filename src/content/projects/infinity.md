@@ -57,7 +57,7 @@ Because it is a new technology, we had to spend more time with experimentation a
 
 - **Accessibility** : Standardized AI prompts now enforce WCAG 2.1 AA compliance by default, catching ~85% of contrast and label errors before code review as measured by QA through Lighthouse.
 
-- **Business Impact** : The system enabled the company to ship the new ecosystem with a consistent branding for Go-to-Market teams.
+- **Business Impact** : The system enabled the company to launch a unified ecosystem across 3 product lines with consistent branding, reducing Go-to-Market asset review cycles.
 
 ## Live Demos
 
