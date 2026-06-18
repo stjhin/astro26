@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Google service account keys (never commit these)
+src/resume-pdf-download*.json
