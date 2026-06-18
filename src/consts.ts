@@ -2,8 +2,8 @@ export const SITE = {
   URL: "https://stjhin.com",
   TITLE: "Silvialy Tjhin",
   DESCRIPTION:
-    "Product Designer • Design Systems Lead • 0→1 Product Launches",
-  EMAIL: "silvia@stjhin.com",
+    "Product Designer • Design Systems Lead • 0→1 Builder",
+  EMAIL: "stjhin@gmail.com",
 };
 
 export const HOME = {
