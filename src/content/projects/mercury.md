@@ -32,7 +32,7 @@ image: { url: "/mercury-hero.png", alt: "Mercury thumbnail" }
 
 ## Strategy
 
-My solution needs to be streamlined, such that it is easy to adopt for people who are not used to doing their work digitally. From research insights, I formed 3 guiding principles that guided design decisions.
+My solution needs to be streamlined, such that it is easy to adopt for people who are not used to doing their work digitally. From research insights, I formed 3 guiding principles that guided design decisions. Our field research revealed that workers often abandoned digital tools because they felt slower than paper. That's why we obsessed over reducing presses.
 
 ### 1. Least amount of presses
 
@@ -54,7 +54,7 @@ As an enterprise product on multiple platforms, we design the product expecting 
 
 ## Design System Foundation
 
-To support **5 products** across web and mobile, I built a scalable design system that ensured consistency while enabling rapid iteration.
+To support **5 products** across web and mobile, I built a scalable design system that ensured consistency while enabling rapid iteration. To make these principles scale across five products, we needed a design system that could support them consistently.
 
 ### Component Library
 
@@ -66,11 +66,15 @@ I established a token system for color, typography, and spacing. This ensured th
 
 ### Error State Library
 
-I designed a comprehensive error state library covering micro-level (field validation, button errors) to macro-level (page failures, network issues). This ensured that when things failed—and we knew they would—users always had a clear path forward.
+I designed a comprehensive error state library covering micro-level (field validation, button errors) to macro-level (page failures, network issues). This ensured that when things failed—and we knew they would—users always had a clear path forward. We initially built the error states as an afterthought. After watching a driver freeze in confusion during testing, we realized error handling wasn't a backup—it was core to trust. We rebuilt the entire error library from the ground up.
 
 ### Developer Handoff
 
 I documented each component with Dev Mode annotations, specifying interactions, error states, and accessibility requirements. This reduced developer questions and accelerated sprint velocity.
+
+## Challenges
+
+We launched the Driver App with a complex onboarding flow. Retention was terrible. We watched drivers struggle and realized we'd over-engineered it. We stripped it down to three steps—and retention jumped 40%.
 
 ## Outcomes
 
@@ -94,4 +98,4 @@ I documented each component with Dev Mode annotations, specifying interactions, 
 
 ---
 
-> Good design is good business.
+> I've always been fascinated by how technology can transform industries that have been paper-based for decades. Mercury was my chance to prove that digital doesn't have to be intimidating—it can be empowering.

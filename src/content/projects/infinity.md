@@ -11,6 +11,8 @@ image: {
 
 ## Overview
 
+> Trained as an architect. I still think about design the same way—building systems that are structurally sound, scalable, and beautiful. This is my proof of that.
+
 **Infinity Design System (NDA name)** utilizes the most up-to-date MCP Server and AI models in VS Code to increase adoption and ease of use for all stakeholders from designers, developers, product manager, and marketing. This allows the closest we have from design in figma to production ready code use Piral micro-frontend framework. I am responsible in setting up responsive components, variables, and code connect in Figma, ensuring that all naming structure and code syntax is scalable to development using MCP Server. The dream is to lead the rest of product by design through this design system.
 
 ## My role
@@ -47,6 +49,8 @@ To ensure consistent quality, we utilize the text-based prompt of LLMs. For exam
 
 The hardest part wasn't the technology—it was the unknown. We didn't know if MCP would work. We didn't know if stakeholders would adopt it. We spent 3 sprints experimenting, failing fast, and learning what worked. The breakthrough came when we realized LLMs perform best when component layers are named with intent—not generic labels.
 
+We built the token structure too rigidly at first. It took two sprints to realize we needed more flexibility for mobile vs. web. That taught us to build for the edges, not just the center.
+
 ## Outcomes
 
 - **Adoption**: The system is now used by the whole company for the whole ecosystem with multiple products within it.
@@ -65,4 +69,4 @@ The hardest part wasn't the technology—it was the unknown. We didn't know if M
 
 ---
 
-> Trained as an architect. I still think about design the same way—building systems that are structurally sound, scalable, and beautiful. This is my proof of that.
+> —Silvia, architect-turned-designer.
