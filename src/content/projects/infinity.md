@@ -49,13 +49,13 @@ Because it is a new technology, we had to spend more time with experimentation a
 
 ## Outcomes
 
-- **Adoption**: The system is now used by the whole company for the ecosystem with multiple products within it.
+- **Adoption**: The system is now used by the whole company for the whole ecosystem with multiple products within it.
 
-- **Design Velocity** : Component creation time dropped from ~4 hours to ~45 minutes using the MCP-powered AI generation pipeline—an 80% reduction.
+- **Design Velocity** : Component creation time dropped from ~4 hours to ~45 minutes using the MCP-powered AI generation pipeline—an 80% reduction as measured by Github PR requests and Merges.
 
 - **Developer Handoff** : Storybook + Figma Code Connect eliminated ~70% of implementation questions, reducing back-and-forth in sprints from ~15 chat threads to ~2.
 
-- **Accessibility** : Standardized AI prompts now enforce WCAG 2.1 AA compliance by default, catching ~85% of contrast and label errors before code review.
+- **Accessibility** : Standardized AI prompts now enforce WCAG 2.1 AA compliance by default, catching ~85% of contrast and label errors before code review as measured by QA through Lighthouse.
 
 - **Business Impact** : The system enabled the company to ship the new ecosystem with a consistent branding for Go-to-Market teams.
 
