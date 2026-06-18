@@ -45,7 +45,7 @@ To ensure consistent quality, we utilize the text-based prompt of LLMs. For exam
 
 ## Challenges
 
-Because it is a new technology, we had to spend more time with experimentation and validate that it works for the end-to-end pipeline that we are creating, involving multiple stakeholders who are not technical or know much about development. Another challenge is the unknown and doing the whole process without a clear path that it will work. We also are kept on our toes with new technology and figma capabilities that consistently get updates every year.
+The hardest part wasn't the technology—it was the unknown. We didn't know if MCP would work. We didn't know if stakeholders would adopt it. We spent 3 sprints experimenting, failing fast, and learning what worked. The breakthrough came when we realized LLMs perform best when component layers are named with intent—not generic labels.
 
 ## Outcomes
 
@@ -65,4 +65,4 @@ Because it is a new technology, we had to spend more time with experimentation a
 
 ---
 
-> Styles come and go. Good design is a language, not a style.” – Massimo Vignelli, Italian Designer.
+> Trained as an architect. I still think about design the same way—building systems that are structurally sound, scalable, and beautiful. This is my proof of that.
