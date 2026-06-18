@@ -1,12 +1,28 @@
 ---
 import Position from "@/components/Position.astro";
 import Skills from "@/components/Skills.astro";
+
+const withBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
 ---
 
 <section class="resume container mx-auto pt-18 p-6">
-  <h2 class="heading text-5xl md:text-9xl uppercase mr-4 md:mr-8 my-8">
-    Resume
-  </h2>
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+    <h2 class="heading text-5xl md:text-9xl uppercase">
+      Resume
+    </h2>
+    <a
+      href={withBase("/Resume-June2026.pdf")}
+      download
+      class="w-full sm:w-auto flex items-center justify-center bg-primary rounded-2xl py-3 px-6 sm:py-4 sm:px-10 cursor-pointer hover:bg-background hover:outline hover:outline-1 hover:outline-dashed hover:outline-secondary hover:text-foreground transition text-background font-mono font-bold"
+    >
+      Download Resume
+    </a>
+  </div>
 
   <div class="positions space-y-2 max-w-3xl">
     <Position
