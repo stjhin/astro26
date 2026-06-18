@@ -1,0 +1,9 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ResumeContent from "@/components/Resume.astro";
+import { SITE } from "@/consts";
+---
+
+<Layout title="Resume" description={`Resume of ${SITE.TITLE} — product designer and systems thinker.`}>
+    <ResumeContent />
+</Layout>

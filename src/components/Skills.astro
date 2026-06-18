@@ -1,0 +1,49 @@
+---
+export interface Props {
+  /** Page-level heading (e.g. "Things I'm good at") */
+  title?: string;
+  /** Groups of skills — each group is an array of skill names */
+  groups?: string[][];
+}
+
+const {
+  title = "Things I'm good at",
+  groups = [
+    [
+      "UX Design",
+      "Information Architecture",
+      "Market Analysis",
+      "User Research",
+      "Figma",
+      "Storybook",
+    ],
+    [
+      "Design Systems",
+      "Component Architecture",
+      "React",
+      "HTML5 & CSS3",
+      "Claude AI",
+      "WCAG",
+      "Design-to-Code Automation",
+      "MCP Servers Integration",
+    ],
+  ],
+} = Astro.props;
+---
+
+<section id="Skills" class="mt-12">
+  <h3 class="heading text-3xl md:text-5xl uppercase mb-10">{title}</h3>
+  <div class="space-y-6">
+    {
+      groups.map((skills) => (
+        <div class="skills-group flex flex-wrap gap-3">
+          {skills.map((skill) => (
+            <span class="skill inline-flex items-center justify-center rounded-4xl py-3 px-6 outline-1 outline-dashed outline-secondary text-secondary text-sm md:text-base transition hover:outline-foreground hover:text-foreground">
+              {skill}
+            </span>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+</section>

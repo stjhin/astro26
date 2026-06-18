@@ -30,6 +30,7 @@ const withBase = (path: string) => {
         <li><a href={withBase("/")}>Home</a></li>
         <li><a href={withBase("/about")}>About</a></li>
         <li><a href={withBase("/projects")}>Projects</a></li>
+        <li><a href={withBase("/resume")}>Resume</a></li>
         
       </ul>
     </div>
@@ -39,7 +40,7 @@ const withBase = (path: string) => {
         {
           LINKS.map((link) => (
             <li>
-              <a href={link.HREF}>{link.NAME}</a>
+              <a href={link.HREF.startsWith("/") ? withBase(link.HREF) : link.HREF}>{link.NAME}</a>
             </li>
           ))
         }

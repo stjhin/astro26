@@ -1,0 +1,26 @@
+---
+import Position from "@/components/Position.astro";
+import Skills from "@/components/Skills.astro";
+---
+
+<section class="resume container mx-auto pt-18 p-6">
+  <h2 class="heading text-5xl md:text-9xl uppercase mr-4 md:mr-8 my-8">
+    Resume
+  </h2>
+
+  <div class="positions space-y-2 max-w-3xl">
+    <Position
+      company="Intelex"
+      title="Product Designer in EHS Industry"
+      date="2022–2026"
+    />
+    <Position
+      company="Acid Integrations"
+      title="UX Designer for Consultancy"
+      date="2018–2022"
+    />
+  </div>
+  <hr class="my-16 border-secondary/30" />
+
+  <Skills />
+</section>

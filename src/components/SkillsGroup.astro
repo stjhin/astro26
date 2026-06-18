@@ -1,0 +1,25 @@
+---
+export interface Props {
+    /** Label for this group of skills (e.g. "Design", "Development") */
+    title?: string;
+    /** Array of skill names to render */
+    skills: string[];
+}
+
+const { title, skills } = Astro.props;
+---
+
+<div class="skills-group">
+    {title && (
+        <h4 class="heading text-xl md:text-2xl uppercase mb-4 text-secondary">{title}</h4>
+    )}
+    <div class="flex flex-wrap gap-3">
+        {
+            skills.map((skill) => (
+                <span class="skill inline-flex items-center justify-center rounded-4xl py-3 px-6 outline-1 outline-dashed outline-secondary text-secondary text-sm md:text-base transition hover:outline-foreground hover:text-foreground">
+                    {skill}
+                </span>
+            ))
+        }
+    </div>
+</div>

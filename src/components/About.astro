@@ -1,84 +1,48 @@
 ---
+import Skills from "@/components/Skills.astro";
 const withBase = (path: string) => {
-    const base = import.meta.env.BASE_URL.endsWith("/")
-        ? import.meta.env.BASE_URL
-        : `${import.meta.env.BASE_URL}/`;
-    return `${base}${path.replace(/^\/+/, "")}`;
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
 };
 ---
 
 <section id="About" class="container mx-auto mb-28 p-6">
-    <h3 class="heading text-3xl md:text-5xl uppercase">About me</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 items-center md:p-0 gap-8">
-        <div class="space-y-6">
-                <div
-                    class="w-full aspect-[668/516] md:max-w-[668px] overflow-hidden rounded-3xl"
-                >
-                    <img
-                        src={withBase("/thesis.png")}
-                        alt="Thesis Image"
-                        class="w-full h-full object-cover cursor-pointer"
-                        data-modalable
-                    />
-                </div>
-        </div>
-
-        <div>
-            <div class="text-lg md:text-2xl text-secondary space-y-4">
-                <p>
-                    A system thinker who bridges business goals with user needs & product strategy. I bring systems thinking and consistency to complex problems and help teams deliver faster in scale with fewer inconsistencies and technical blockers. I focus on accessibility, quality, and scalability - allowing teams to increase production efficiency and deliver consistent output.
-                </p>
-                <p>
-                    P.S. I was trained as an Architect. The image was my Master thesis. As a post-modern architect making things digitally these days, I carry the same mindset: curiosity, patience, and the belief that good things are built over time.
-                </p>
-            </div>
-            <div>
-                <h3 class="heading text-2xl uppercase my-8 text-secondary">
-                    My Skills
-                </h3>
-                <div class="flex flex-wrap gap-4 mt-8">
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        Figma
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        Storybook
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        MCP servers Integration
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        Usability Testing
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        Design and Market Research
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        WCAG
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        Design-to-Code Automation
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        Docusaurus
-                    </span>
-                </div>
-            </div>
-        </div>
+  <h3 class="heading text-3xl md:text-5xl uppercase mb-8">About me</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 items-center md:p-0 gap-8">
+    <div class="space-y-6">
+      <div
+        class="w-full aspect-[668/516] md:max-w-[668px] overflow-hidden rounded-3xl"
+      >
+        <img
+          src={withBase("/thesis.png")}
+          alt="Thesis Image"
+          class="w-full h-full object-cover cursor-pointer"
+          data-modalable
+        />
+      </div>
     </div>
+
+    <div>
+      <div class="text-lg md:text-2xl text-secondary space-y-4">
+        <p>
+          A system thinker who bridges business goals with user needs & product
+          strategy. I bring systems thinking and consistency to complex problems
+          and help teams deliver faster in scale with fewer inconsistencies and
+          technical blockers. I focus on accessibility, quality, and scalability
+          - allowing teams to increase production efficiency and deliver
+          consistent output.
+        </p>
+        <p>
+          P.S. I was trained as an Architect. The image was my Master thesis. As
+          a post-modern architect making things digitally these days, I carry
+          the same mindset: curiosity, patience, and the belief that good things
+          are built over time.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <Skills />
 </section>

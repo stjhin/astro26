@@ -1,0 +1,30 @@
+---
+export interface Props {
+    company?: string;
+    title?: string;
+    date: string;
+}
+
+const { company, title, date } = Astro.props;
+---
+
+<div class="position flex items-center gap-4 py-2">
+    <div class="position-header flex flex-col min-w-0 shrink-0">
+        {
+            company ? (
+                <span class="company text-foreground font-bold text-base md:text-lg">{company}</span>
+            ) : (
+                <span class="spacer block h-[1.5em]" aria-hidden="true"></span>
+            )
+        }
+        {
+            title ? (
+                <span class="title text-secondary text-sm md:text-base">{title}</span>
+            ) : (
+                <span class="hidden" aria-hidden="true"></span>
+            )
+        }
+    </div>
+    <div class="interpunct flex-1 min-w-[2rem] border-b border-dashed border-secondary self-center"></div>
+    <div class="position-date text-secondary text-sm md:text-base shrink-0 text-right">{date}</div>
+</div>
