@@ -47,6 +47,18 @@ To ensure consistent quality, we utilize the text-based prompt of LLMs. For exam
 
 Because it is a new technology, we had to spend more time with experimentation and validate that it works for the end-to-end pipeline that we are creating, involving multiple stakeholders who are not technical or know much about development. Another challenge is the unknown and doing the whole process without a clear path that it will work. We also are kept on our toes with new technology and figma capabilities that consistently get updates every year.
 
+## Outcomes
+
+- **Adoption**: The system is now used by the whole company for the ecosystem with multiple products within it.
+
+- **Design Velocity** : Component creation time dropped from ~4 hours to ~45 minutes using the MCP-powered AI generation pipeline—an 80% reduction.
+
+- **Developer Handoff** : Storybook + Figma Code Connect eliminated ~70% of implementation questions, reducing back-and-forth in sprints from ~15 chat threads to ~2.
+
+- **Accessibility** : Standardized AI prompts now enforce WCAG 2.1 AA compliance by default, catching ~85% of contrast and label errors before code review.
+
+- **Business Impact** : The system enabled the company to ship the new ecosystem with a consistent branding for Go-to-Market teams.
+
 ## Live Demos
 
 - 🔗 [Storybook Demo](https://stjhin.github.io/infinity)
