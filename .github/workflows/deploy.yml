@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - master
+  workflow_run:
+    workflows: ["Sync Resume from Google Docs"]
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
