@@ -11,10 +11,10 @@ const withBase = (path: string) => {
 ---
 
 <section class="resume container mx-auto pt-18 p-6">
-  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-    <h1 class="heading text-5xl md:text-9xl uppercase">
-      Resume
-    </h1>
+  <div
+    class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8"
+  >
+    <h1 class="heading text-5xl md:text-9xl uppercase">Resume</h1>
     <a
       href={withBase("/Resume-Ju2026.pdf")}
       download
@@ -24,17 +24,32 @@ const withBase = (path: string) => {
     </a>
   </div>
 
-  <div class="positions space-y-2 max-w-3xl">
+  <div class="positions space-y-2">
     <Position
       company="Intelex"
-      title="Product Designer — EHSQ Industry"
+      title="Product Designer — Design Systems"
+      description="Scalable, AI-integrated design systems for the whole ecosystem & acquisition integration."
       date="2022–2026"
-    />
+    >
+      <ul class="description text-tertiary text-xs md:text-sm list-disc pl-5 space-y-1">
+        <li>Built a design system from scratch that rebuilt ACTS, an acquired product, into the Intelex ecosystem — unifying two products into a single experience</li>
+        <li>Serves 100+ surfaces, 40+ applications, and 100+ engineers across the organization</li>
+        <li>Reduced component creation time by 80% with AI-assisted Figma-to-Storybook pipeline using MCP automation</li>
+        <li>Drove 80% adoption across 10+ product teams — cutting developer handoff questions by 70%</li>
+        <li>Redesigned core compliance workflows — reducing task completion time by ~35% and cutting support tickets by ~40%</li>
+      </ul>
+    </Position>
     <Position
       company="Acid Integrations"
       title="UX Designer — Consultancy"
+      description="0-to-1 product launch for early-stage startups."
       date="2018–2022"
-    />
+    >
+      <ul class="description text-tertiary text-xs md:text-sm list-disc pl-5 space-y-1">
+        <li>Led end-to-end design for multiple MVPs — from research to shipped products</li>
+        <li>Reduced iteration cycles by 50% with lightweight research and experimentation frameworks</li>
+      </ul>
+    </Position>
   </div>
   <hr class="my-16 border-secondary/30" />
 
