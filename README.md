@@ -6,6 +6,10 @@
 
 ### [Live Site](https://stjhin.github.io/astro26/)
 
+### [Design System](https://stjhin.github.io/astro26/projects/infinity/)
+
+### [Resume](https://stjhin.github.io/astro26/resume/)
+
 ## ✍️ Description
 
 Welcome! This is an experiment and also for me to update my portfolio in 2026 using Astro and one of its theme using just Github Copilot. I want to see how far I can push AI capabilities through this personal project. I know some front end development, but I am no way a developer.
