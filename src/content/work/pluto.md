@@ -26,7 +26,7 @@ alt:  "pluto thumbnail"
 > Lead Product Designer
 
 - Deliver an MVP at Alpha stage to Beta stage.
-- Expanding the product’s use case from Alpha to Beta stage.
+- Expanding the product's use case from Alpha to Beta stage.
 - Alpha MVP (food delivery) > Beta MVP (First Aid Responder.)
 - Lead the design process from research to bring Alpha to Beta launch of the MVP.
 - Collaborate in a AGILE-SCRUM pod with Product Manager, Product Owner, and Developers in 2-Weeks Sprints.
@@ -47,8 +47,8 @@ alt:  "pluto thumbnail"
 
 ### Personas
 
-- **Jonah** is a First Aid Responder. When he receives a call for support for an agent on the field over broken equipment, he needs to send another one quickly in a high pressure environment that impacts someone’s life.
-- **Ben** is an EMT service personnel. There are times when his defibrillator that he has brought on the ambulance fail to operate. Once that happens, he can only call support and hope for another EMT service personnel to be sent with a working one. He can only wait in a high pressure environment where seconds may affect someone’s life.
+- **Jonah** is a First Aid Responder. When he receives a call for support for an agent on the field over broken equipment, he needs to send another one quickly in a high pressure environment that impacts someone's life.
+- **Ben** is an EMT service personnel. There are times when his defibrillator that he has brought on the ambulance fail to operate. Once that happens, he can only call support and hope for another EMT service personnel to be sent with a working one. He can only wait in a high pressure environment where seconds may affect someone's life.
 - **Gerry** a Safety manager who ensures that all PPE(Personal Protective Equipment) and equipment maintenance are up to date. He manages the drone and analytics within the context of Pluto.
 
 ![](/pluto-diagram.png)

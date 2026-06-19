@@ -1,15 +1,57 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import About from "@/components/About.astro";
-import Projects from "@/components/Projects.astro";
-
+import Card from "@/components/Card.astro";
 import Hero from "@/components/Hero.astro";
-
+import { getCollection, type CollectionEntry } from "astro:content";
 import { HOME } from "@/consts";
+
+const allWork: CollectionEntry<"work">[] = (
+  await getCollection("work")
+).slice(0, 3);
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
     <Hero />
-    <Projects />
+    <section id="Work" class="container mx-auto px-6">
+        <div class="overflow-hidden mb-12">
+            <div class="flex animate-scroll">
+                <div class="flex shrink-0 whitespace-nowrap">
+                    {
+                        Array.from({ length: 10 }).map((_) => (
+                            <span class="heading text-3xl md:text-5xl uppercase mr-4 md:mr-8 -mb-0 block">
+                                work
+                            </span>
+                        ))
+                    }
+                </div>
+                <div class="flex shrink-0 whitespace-nowrap" aria-hidden="true">
+                    {
+                        Array.from({ length: 10 }).map((_) => (
+                            <span class="heading text-3xl md:text-5xl uppercase mr-4 md:mr-8 -mb-0 block">
+                                work
+                            </span>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+        {allWork.map((item) => <Card entry={item} />)}
+    </section>
     <About />
 </Layout>
+
+<style>
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 15s linear infinite;
+  }
+</style>

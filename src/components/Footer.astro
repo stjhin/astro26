@@ -2,8 +2,8 @@
 import { SITE, LINKS } from "@/consts";
 import { getCollection, type CollectionEntry } from "astro:content";
 
-const Projects: CollectionEntry<"projects">[] = (
-  await getCollection("projects")
+const WorkItems: CollectionEntry<"work">[] = (
+  await getCollection("work")
 ).slice(0, 3);
 const withBase = (path: string) => {
   const base = import.meta.env.BASE_URL.endsWith("/")
@@ -29,7 +29,7 @@ const withBase = (path: string) => {
       <ul class="space-y-1 text-secondary nav-links">
         <li><a href={withBase("/")}>Home</a></li>
         <li><a href={withBase("/about")}>About</a></li>
-        <li><a href={withBase("/projects")}>Projects</a></li>
+        <li><a href={withBase("/work")}>Work</a></li>
         <li><a href={withBase("/resume")}>Resume</a></li>
         
       </ul>
@@ -47,12 +47,12 @@ const withBase = (path: string) => {
       </ul>
     </div>
     <div>
-  <h3 class="mb-2 text-xl text-background">Projects</h3>
+  <h3 class="mb-2 text-xl text-background">Work</h3>
         <ul class="space-y-1 text-secondary nav-links">
         {
-          Projects.map((project) => (
+          WorkItems.map((item) => (
             <li>
-                <a href={withBase(`/projects/${project.id}`)}>{project.data.title}</a>
+                <a href={withBase(`/work/${item.id}`)}>{item.data.title}</a>
             </li>
           ))
         }

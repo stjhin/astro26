@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { HOME, LINKS, PROJECTS, SITE } from "../src/consts";
+import { HOME, LINKS, WORK, SITE } from "../src/consts";
 
 describe("site constants", () => {
   it("has required non-empty core fields", () => {
@@ -9,11 +9,11 @@ describe("site constants", () => {
     expect(SITE.URL.startsWith("https://")).toBe(true);
   });
 
-  it("exposes page metadata for home and projects", () => {
+  it("exposes page metadata for home and work", () => {
     expect(HOME.TITLE).toBe("Home");
-    expect(PROJECTS.TITLE).toBe("Projects");
+    expect(WORK.TITLE).toBe("Work");
     expect(HOME.DESCRIPTION.trim().length).toBeGreaterThan(0);
-    expect(PROJECTS.DESCRIPTION.trim().length).toBeGreaterThan(0);
+    expect(WORK.DESCRIPTION.trim().length).toBeGreaterThan(0);
   });
 
   it("contains social links with secure urls", () => {

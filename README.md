@@ -6,7 +6,7 @@
 
 ### [Live Site](https://stjhin.github.io/astro26/)
 
-### [Design System](https://stjhin.github.io/astro26/projects/infinity/)
+### [Design System](https://stjhin.github.io/astro26/work/infinity/)
 
 ### [Resume](https://stjhin.github.io/astro26/resume/)
 
