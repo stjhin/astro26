@@ -66,7 +66,7 @@ const segments = [
 const signer = createSign("RSA-SHA256");
 signer.write(segments.join("."));
 signer.end();
-const signature = base64url(signer.sign(private_key, "base64"));
+const signature = base64url(signer.sign(private_key));
 const assertion = `${segments[0]}.${segments[1]}.${signature}`;
 
 // ---------------------------------------------------------------------------
