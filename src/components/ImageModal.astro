@@ -61,6 +61,20 @@
         return /\/projects\/[^/]+\/?$/.test(window.location.pathname);
     };
 
+    const isWorkDetailPage = () => {
+        // Base-path-safe detection for work detail pages (works for /work/... and /<base>/work/...).
+        if (document.getElementById('work-hero')) return true;
+        return /\/work\/[^/]+\/?$/.test(window.location.pathname);
+    };
+
+    const isGalleryPage = () => isProjectDetailPage() || isWorkDetailPage();
+
+    const getGalleryHeroId = () => {
+        if (isProjectDetailPage()) return 'project-hero';
+        if (isWorkDetailPage()) return 'work-hero';
+        return null;
+    };
+
     const updateNavButtons = () => {
         const showNav = galleryImages.length > 1;
         if (prevBtn) prevBtn.classList.toggle('hidden', !showNav);
@@ -81,9 +95,10 @@
         if (!modal || !modalImg) return;
         modal.classList.remove('hidden');
 
-        // Determine gallery set: for project detail pages, include hero + all project article images.
-        if (isProjectDetailPage()) {
-            const hero = document.getElementById('project-hero');
+        // Determine gallery set: for project/work detail pages, include hero + all article images.
+        if (isGalleryPage()) {
+            const heroSelector = getGalleryHeroId();
+            const hero = heroSelector ? document.getElementById(heroSelector) : null;
             const articleImgs = Array.from(document.querySelectorAll('article img')).filter((i) => i.id !== 'modal-img');
             const set = [hero, ...articleImgs].filter(Boolean);
             galleryImages = Array.from(new Set(set));
@@ -118,19 +133,19 @@
         if (img.id === 'modal-img') return false;
 
         const isOptIn = img.matches('img[data-full], img[data-modalable], img.modal-image, img.clickable-hero');
-        const isProjectImage = isProjectDetailPage() && (img.matches('#project-hero') || !!img.closest('article'));
+        const isProjectImage = isGalleryPage() && (img.matches('#project-hero, #work-hero') || !!img.closest('article'));
 
         return isOptIn || isProjectImage;
     };
 
     // Wire up images that opt-in
     const attachImageModal = () => {
-        const projectImgs = isProjectDetailPage()
-            ? Array.from(document.querySelectorAll('#project-hero, article img'))
+        const galleryImgs = isGalleryPage()
+            ? Array.from(document.querySelectorAll('#project-hero, #work-hero, article img'))
             : [];
 
         const optInImgs = Array.from(document.querySelectorAll('img[data-full], img[data-modalable], img.modal-image, img.clickable-hero'));
-        const imgs = Array.from(new Set([...projectImgs, ...optInImgs]));
+        const imgs = Array.from(new Set([...galleryImgs, ...optInImgs]));
 
         imgs.forEach((img) => {
             if (img.id === 'modal-img') return; // skip nested modal image if any
