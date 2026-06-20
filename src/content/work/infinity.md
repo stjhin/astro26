@@ -13,7 +13,7 @@ image: {
 
 > Trained as an architect. I still think about design the same way—building systems that are structurally sound, scalable, and beautiful. This is my proof of that.
 
-**Infinity Design System (NDA name)** utilizes the most up-to-date MCP Server and AI models in VS Code to increase adoption and ease of use for all stakeholders from designers, developers, product manager, and marketing. This allows the closest we have from design in figma to production ready code use Piral micro-frontend framework. I am responsible in setting up responsive components, variables, and code connect in Figma, ensuring that all naming structure and code syntax is scalable to development using MCP Server. The dream is to lead the rest of product by design through this design system.
+**Infinity Design System (NDA name)** utilizes the most up-to-date MCP Server and AI models in VS Code to increase adoption and ease of use for all stakeholders from designers, developers, product manager, and marketing. This allows the closest we have from design in figma to production ready code use micro-frontend framework. I am responsible in setting up responsive components, variables, and code connect in Figma, ensuring that all naming structure and code syntax is scalable to development using MCP Server. The dream is to lead the rest of product by design through this design system. This live demo Storybook is a demo of an NDA design system that I built for an Enterprise company with 40+ applications, 100+ engineers, and 50+ enterprise clients in one giant ecosystem.
 
 ## My role
 
@@ -33,11 +33,17 @@ image: {
 
 ![](/infinity-form.png)
 
+![](/infinity-folder.jpg)
+
 ## Scalable System
 
 I ensure that the naming structure of all components and variables are scalable, so even developers are using the same name in their CSS style tokens. We use atomic names and split the naming levels into three(3): Global, Semantic, Component. Global is for all Foundation level tokens such as color and typography. Semantic is for things shared by more than one component, such as background-color. Component is for tokens that are unique and specific to one component and they are not repeatable.
 
 ![](/infinity-tokens.jpg)
+
+## AI-assisted Workflow
+
+To allow further 1:1 design-code parity between components in figma for designers and storybook for developers, we started by mapping out what a Figma-Storybook workflow should be. We created simple script to do this.
 
 ![](/infinity-figma-storybook.jpg)
 
