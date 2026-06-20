@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import About from "@/components/About.astro";
 import Card from "@/components/Card.astro";
 import Hero from "@/components/Hero.astro";
+import VisitorCounter from "@/components/VisitorCounter.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { HOME } from "@/consts";
 
@@ -13,6 +14,9 @@ const allWork: CollectionEntry<"work">[] = (
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
     <Hero />
+    <div class="container mx-auto px-6 pb-8 flex justify-end">
+        <VisitorCounter />
+    </div>
     <section id="Work" class="container mx-auto px-6">
         <div class="overflow-hidden mb-12">
             <div class="flex animate-scroll">

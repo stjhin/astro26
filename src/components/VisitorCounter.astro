@@ -1,0 +1,45 @@
+---
+// VisitorCounter.astro — displays live visitor count from GoatCounter.
+//
+// Uses GoatCounter's /counter/TOTAL.json endpoint (CORS-enabled, no auth needed).
+//
+// REQUIRED: Enable "Allow adding visitor counts on your website" in
+// GoatCounter Settings (https://stjhin.goatcounter.com/settings).
+---
+
+<div
+    id="visitor-counter"
+    class="text-secondary text-sm text-right"
+    aria-live="polite"
+    aria-label="Visitor count loading"
+></div>
+
+<script>
+    const el = document.getElementById("visitor-counter");
+    if (!el) throw new Error("visitor-counter element not found");
+
+    const COUNTER_URL = "https://stjhin.goatcounter.com/counter/TOTAL.json";
+
+    async function init() {
+        try {
+            const res = await fetch(COUNTER_URL);
+            if (!res.ok) {
+                console.warn("VisitorCounter: got status", res.status);
+                return;
+            }
+            const data = await res.json();
+            // `count` is a pre-formatted string, e.g. "1,247"
+            const count = data.count;
+            if (!count && count !== "0") return;
+
+            el.innerHTML = `📊 ${count} visitors`;
+            el.setAttribute("aria-label", `Visitor count: ${count}`);
+            el.removeAttribute("aria-live"); // done loading
+        } catch (err) {
+            // Network error or JSON parse failure — fail silently.
+            console.warn("VisitorCounter:", err.message);
+        }
+    }
+
+    init();
+</script>
