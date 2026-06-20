@@ -20,7 +20,7 @@
 
     const COUNTER_URL = "https://stjhin.goatcounter.com/counter/TOTAL.json";
 
-    async function init() {
+    async function refresh() {
         try {
             const res = await fetch(COUNTER_URL);
             if (!res.ok) {
@@ -28,18 +28,18 @@
                 return;
             }
             const data = await res.json();
-            // `count` is a pre-formatted string, e.g. "1,247"
             const count = data.count;
             if (!count && count !== "0") return;
 
             el.innerHTML = `📊 ${count} visitors`;
             el.setAttribute("aria-label", `Visitor count: ${count}`);
-            el.removeAttribute("aria-live"); // done loading
+            el.removeAttribute("aria-live");
         } catch (err) {
-            // Network error or JSON parse failure — fail silently.
             console.warn("VisitorCounter:", err.message);
         }
     }
 
-    init();
+    // Fetch immediately, then every 60 seconds while the page is open.
+    refresh();
+    setInterval(refresh, 60_000);
 </script>
