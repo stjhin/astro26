@@ -14,11 +14,40 @@
     aria-label="Visitor count loading"
 ></div>
 
+<style>
+    /* Pulsing green dot — signals "live / updating" */
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50%      { opacity: 0.3; }
+    }
+    .live-dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #22c55e; /* Tailwind green-500 */
+        margin-right: 5px;
+        vertical-align: middle;
+        animation: pulse 2s ease-in-out infinite;
+    }
+    /* Subtle bump when the count changes */
+    @keyframes bump {
+        0%   { transform: scale(1); }
+        50%  { transform: scale(1.08); }
+        100% { transform: scale(1); }
+    }
+    .just-updated {
+        display: inline-block;
+        animation: bump 0.35s ease-out;
+    }
+</style>
+
 <script>
     const el = document.getElementById("visitor-counter");
     if (!el) throw new Error("visitor-counter element not found");
 
     const COUNTER_URL = "https://stjhin.goatcounter.com/counter/TOTAL.json";
+    let lastCount = null;
 
     async function refresh() {
         try {
@@ -31,8 +60,15 @@
             const count = data.count;
             if (!count && count !== "0") return;
 
-            el.innerHTML = `📊 ${count} visitors`;
-            el.setAttribute("aria-label", `Visitor count: ${count}`);
+            const changed = lastCount !== null && lastCount !== count;
+            lastCount = count;
+
+            // Green dot + count. Wrap count in a span that bumps if changed.
+            el.innerHTML =
+                `<span class="live-dot" aria-hidden="true"></span>` +
+                `📊 <span class="${changed ? "just-updated" : ""}">${count}</span> visitors`;
+
+            el.setAttribute("aria-label", `Visitor count: ${count} — updates live`);
             el.removeAttribute("aria-live");
         } catch (err) {
             console.warn("VisitorCounter:", err.message);
