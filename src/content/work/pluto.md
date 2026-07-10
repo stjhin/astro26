@@ -13,7 +13,7 @@ alt:  "pluto thumbnail"
 
 **Pluto(NDA)** is a Drone Management software, created for a logistic company. We attempt to use food delivery for our MVP to test our point A to B success-fail metric and efficiency to eventually use Drone for medical equipment deliveries.
 
-| 30,000+ deliveries | 85% efficiency gains | 50% reduction in lagging indicators | That's what Pluto delivered|
+**| 30,000+ deliveries | 85% efficiency gains | 50% reduction in lagging indicators |**
 
 ## Summary
 
