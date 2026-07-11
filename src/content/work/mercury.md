@@ -32,29 +32,29 @@ image: { url: "/mercury-hero.png", alt: "Mercury thumbnail" }
 
 ## Strategy
 
-My solution needs to be streamlined, such that it is easy to adopt for people who are not used to doing their work digitally. From research insights, I formed 3 guiding principles that guided design decisions. Our field research revealed that workers often abandoned digital tools because they felt slower than paper. That's why we obsessed over reducing presses.
+My solution needs to be streamlined, such that it is easy to adopt for people who are not used to doing their work digitally. From research insights, I formed 3 guiding principles that guided design decisions. Our field research revealed that workers often abandoned digital tools because they felt slower than paper. That's why I was obsessed over reducing presses.
 
 ### 1. Least amount of presses
 
-We try to limit most flows to require less than 10 presses to complete the major steps. This allows repeat users and power users to perform frequent flows with minimal friction. For major flows, we did extensive user research and validation by going to the field and observing workflows.
+I try to limit most flows to require less than 10 presses to complete the major steps. This allows repeat users and power users to perform frequent flows with minimal friction. For major flows, I did extensive user research and validation by going to the field and observing workflows.
 
 ![](/mercury-flow.png)
 
 ### 2. Establish Trustworthiness
 
-Most of our userbase are people who might be first-time adopters of digital processes. As the first touchpoint of digital experience, establishing trustworthiness is crucial to turn them into repeat users and eventually power users. We do this by being visual with every system status—clear, but not overwhelming. Notifications are a good example.
+Most of our userbase are people who might be first-time adopters of digital processes. As the first touchpoint of digital experience, establishing trustworthiness is crucial to turn them into repeat users and eventually power users. I do this by being visual with every system status—clear, but not overwhelming. Notifications are a good example.
 
 ![](/mercury-3.png)
 
 ### 3. Anticipate Failure
 
-As an enterprise product on multiple platforms, we design the product expecting that things can and will fail. Error states are designed from micro (component) level up to macro (journey) level. When something unexpected happens, there is always a fallback to prevent user frustration.
+As an enterprise product on multiple platforms, I design the product expecting that things can and will fail. Error states are designed from micro (component) level up to macro (journey) level. When something unexpected happens, there is always a fallback to prevent user frustration.
 
 ![](/mercury-2.png)
 
 ## Design System Foundation
 
-To support **5 products** across web and mobile, I built a scalable design system that ensured consistency while enabling rapid iteration. To make these principles scale across five products, we needed a design system that could support them consistently.
+To support **5 products** across web and mobile, I built a scalable design system that ensured consistency while enabling rapid iteration. To make these principles scale across five products, I needed a design system that could support them consistently.
 
 ### Component Library
 
@@ -62,11 +62,11 @@ I created a library of **50+ reusable components** in Figma—buttons, forms, da
 
 ### Token Architecture
 
-I established a token system for color, typography, and spacing. This ensured that as we expanded from 1 product to 5, the UI remained consistent across all platforms—without rebuilding from scratch.
+I established a token system for color, typography, and spacing. This ensured that as I expanded from 1 product to 5, the UI remained consistent across all platforms—without rebuilding from scratch.
 
 ### Error State Library
 
-I designed a comprehensive error state library covering micro-level (field validation, button errors) to macro-level (page failures, network issues). This ensured that when things failed—and we knew they would—users always had a clear path forward. We initially built the error states as an afterthought. After watching a driver freeze in confusion during testing, we realized error handling wasn't a backup—it was core to trust. We rebuilt the entire error library from the ground up.
+I designed a comprehensive error state library covering micro-level (field validation, button errors) to macro-level (page failures, network issues). This ensured that when things failed—and I knew they would—users always had a clear path forward. I initially built the error states as an afterthought. After watching a driver freeze in confusion during testing, I realized error handling wasn't a backup—it was core to trust. I rebuilt the entire error library from the ground up.
 
 ### Developer Handoff
 
@@ -74,7 +74,7 @@ I documented each component with Dev Mode annotations, specifying interactions, 
 
 ## Challenges
 
-We launched the Driver App with a complex onboarding flow. Retention was terrible. We watched drivers struggle and realized we'd over-engineered it. We stripped it down to three steps—and retention jumped 40%.
+I launched the Driver App with a complex onboarding flow. Retention was terrible. I watched drivers struggle and realized I'd over-engineered it. I stripped it down to three steps—and retention jumped 40%.
 
 ## Outcomes
 

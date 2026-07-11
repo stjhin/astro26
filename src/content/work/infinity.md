@@ -37,31 +37,31 @@ image: {
 
 ## Scalable System
 
-I ensure that the naming structure of all components and variables are scalable, so even developers are using the same name in their CSS style tokens. We use atomic names and split the naming levels into three(3): Global, Semantic, Component. Global is for all Foundation level tokens such as color and typography. Semantic is for things shared by more than one component, such as background-color. Component is for tokens that are unique and specific to one component and they are not repeatable.
+I ensure that the naming structure of all components and variables are scalable, so even developers are using the same name in their CSS style tokens. I use atomic names and split the naming levels into three(3): Global, Semantic, Component. Global is for all Foundation level tokens such as color and typography. Semantic is for things shared by more than one component, such as background-color. Component is for tokens that are unique and specific to one component and they are not repeatable.
 
 ![](/infinity-tokens.jpg)
 
 ## AI-assisted Workflow
 
-To allow further 1:1 design-code parity between components in figma for designers and storybook for developers, we started by mapping out what a Figma-Storybook workflow should be. We created simple script to do this.
+To allow further 1:1 design-code parity between components in figma for designers and storybook for developers, I started by mapping out what a Figma-Storybook workflow should be. I created simple script to do this.
 
 ![](/infinity-figma-storybook.jpg)
 
 ## Responsive Component
 
-All component is responsive that allow designer to quickly make prototype to show clients to validate the design and allow hand-off as reusable component via Github Copilot in VS Code. As we are using MCP Server and utilizing LLMs through Github Copilot in VS Code, we ensured that all text-based UI element has a name that will make the LLMs understand better, such as ensuring that each Figma layers are properly named and has Dev Mode annotation separated by their types such as for interactions and accessibility. We found that LLM-based model understand text-based input better. We use Atomic Design framework to structure our components in Figma.
+All component is responsive that allow designer to quickly make prototype to show clients to validate the design and allow hand-off as reusable component via Github Copilot in VS Code. As I was using MCP Server and utilizing LLMs through Github Copilot in VS Code, I ensured that all text-based UI element has a name that will make the LLMs understand better, such as ensuring that each Figma layers are properly named and has Dev Mode annotation separated by their types such as for interactions and accessibility. I found that LLM-based model understand text-based input better. I use Atomic Design framework to structure our components in Figma.
 
 ![](/infinity-atomic.jpg)
 
 ## Consistency
 
-To ensure consistent quality, we utilize the text-based prompt of LLMs. For example, we have standard text-based prompt to create the react prototype for non-developers to create a prototype using the least possible prompts through MCP that ensures WCAG compliant and that it is creating reusable components that we can ship to developers that allow them to turn it into production ready code.
+To ensure consistent quality, I utilize the text-based prompt of LLMs. For example, I have standard text-based prompt to create the react prototype for non-developers to create a prototype using the least possible prompts through MCP that ensures WCAG compliant and that it is creating reusable components that I can ship to developers that allow them to turn it into production ready code.
 
 ## Challenges
 
-The hardest part wasn't the technology—it was the unknown. We didn't know if MCP would work. We didn't know if stakeholders would adopt it. We spent 3 sprints experimenting, failing fast, and learning what worked. The breakthrough came when we realized LLMs perform best when component layers are named with intent—not generic labels.
+The hardest part wasn't the technology—it was the unknown. I didn't know if MCP would work. I didn't know if stakeholders would adopt it. I spent 3 sprints experimenting, failing fast, and learning what worked. The breakthrough came when I realized LLMs perform best when component layers are named with intent—not generic labels.
 
-We built the token structure too rigidly at first. It took two sprints to realize we needed more flexibility for mobile vs. web. That taught us to build for the edges, not just the center.
+I built the token structure too rigidly at first. It took two sprints to realize I needed more flexibility for mobile vs. web. That taught us to build for the edges, not just the center.
 
 ## Outcomes
 

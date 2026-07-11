@@ -11,7 +11,7 @@ alt:  "pluto thumbnail"
 
 ## Overview
 
-**Pluto(NDA)** is a Drone Management software, created for a logistic company. We attempt to use food delivery for our MVP to test our point A to B success-fail metric and efficiency to eventually use Drone for medical equipment deliveries.
+**Pluto(NDA)** is a Drone Management software, created for a logistic company. I attempt to use food delivery for our MVP to test our point A to B success-fail metric and efficiency to eventually use Drone for medical equipment deliveries.
 
 **| 30,000+ deliveries | 85% efficiency gains | 50% reduction in lagging indicators |**
 
@@ -55,26 +55,26 @@ alt:  "pluto thumbnail"
 
 ### Userflow
 
-We analyzed the current manual flow from end-to-end of how much steps it takes to deliver a defribilator to a patient and the possible issues that could prevent the patien from getting their medical equipment. We noticed that Pluto is able to automate most steps and the most tedious part of emergency medical treatment. We see opportunities of testing this remote locations where it takes hour for people, just to get emergency treatment. A drone is small and fast enough to go directly to the location with 0 blockers. Our research revealed that the biggest blocker wasn't technology—it was trust. Users needed to believe the drone would arrive. That insight shaped our entire testing strategy.
+I analyzed the current manual flow from end-to-end of how much steps it takes to deliver a defribilator to a patient and the possible issues that could prevent the patien from getting their medical equipment. I noticed that Pluto is able to automate most steps and the most tedious part of emergency medical treatment. I see opportunities of testing this remote locations where it takes hour for people, just to get emergency treatment. A drone is small and fast enough to go directly to the location with 0 blockers. Our research revealed that the biggest blocker wasn't technology—it was trust. Users needed to believe the drone would arrive. That insight shaped our entire testing strategy.
 
 ## Strategy
 
 1. **Mocking an 'Emergency'**
-   We tested this in the largest park that we could find in our city with big trees that could possibly disturb signals to the drone. The drone's task is simple: get 1 handkerchief to a location in the middle of the park that is unpinnable on google maps.
+   I tested this in the largest park that I could find in our city with big trees that could possibly disturb signals to the drone. The drone's task is simple: get 1 handkerchief to a location in the middle of the park that is unpinnable on google maps.
 
 2. **Staggered real life testing**
-   We know that we will never get any approvals to do a real life testing, so we aim to stagger our test cases and impact. Alpha stage has proven that the system is at a stable enough success rate to move onto the next impact stage. We started from delivering food, where the impact score caused by a failure is not life threatening, to delivering birthday cakes, where the impact score is more about preventing a 5-year old from crying at their birthday party. It has taken multiple months just to schedule and plan our gradual progress from one impact score to the next. Every decision we made—from the park test to the birthday cake trial—was guided by one question: 'Does this bring us closer to saving lives?
+   I know that I will never get any approvals to do a real life testing, so I aim to stagger our test cases and impact. Alpha stage has proven that the system is at a stable enough success rate to move onto the next impact stage. I started from delivering food, where the impact score caused by a failure is not life threatening, to delivering birthday cakes, where the impact score is more about preventing a 5-year old from crying at their birthday party. It has taken multiple months just to schedule and plan our gradual progress from one impact score to the next. Every decision I made—from the park test to the birthday cake trial—was guided by one question: 'Does this bring us closer to saving lives?
 
-   We lost a drone on our first park test. A tree branch blocked the signal. We learned to build fail-safes into the system—and to test in more open spaces.
+   I lost a drone on our first park test. A tree branch blocked the signal. I learned to build fail-safes into the system—and to test in more open spaces.
 
 3. **Iterative design**
-   We often have to change and adjust on the go. Fortunately, with the availability of AI tools these days, it has helped us to make design and product decision in a matter of hours, rather than days.
+   I often have to change and adjust on the go. Fortunately, with the availability of AI tools these days, it has helped us to make design and product decision in a matter of hours, rather than days.
 
 ![](/pluto-3.png)
 
 ## Outcomes
 
-> When we saw the first drone successfully deliver a handkerchief in the park, we knew we were onto something. It wasn't medical equipment—but it was proof of concept.
+> When I saw the first drone successfully deliver a handkerchief in the park, I knew that I was onto something. It wasn't medical equipment—but it was proof of concept.
 
 - 30000+ Drone delivery within 3 months of launch
 - 50% Lagging indicator reduction within 6 months of launch
