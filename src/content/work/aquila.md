@@ -1,6 +1,6 @@
 ---
 title: "Aquila"
-description: "Designing reusable AI interaction patterns within design system."
+description: "From Research to implementing reusable AI interaction patterns within design system."
 liveUrl: https://stjhin.github.io/infinity/?path=/story/ai-patterns-overview--ai-chat
 image:
   {
