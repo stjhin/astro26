@@ -25,9 +25,12 @@ Rather than treating AI as another feature, I see it as a new participant in the
 
 While experimenting with AI products, I noticed that every team seemed to solve the same interaction problems from scratch.
 
-> - How should AI communicate confidence?
-> - When should it explain itself?
-> - How should users know when to trust it?
+> - What should an AI response look like?
+> - How should confidence be communicated?
+> - When should reasoning be shown?
+> - How should streaming be handled?
+> - What is the anatomy of an AI interaction?
+> - What patterns should be reusable across products?
 
 Traditional design systems gave us reusable patterns for buttons, forms, and navigation, but they offered little guidance for human-AI interaction.
 
