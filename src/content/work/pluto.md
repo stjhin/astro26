@@ -57,10 +57,19 @@ alt:  "pluto thumbnail"
 
 I analyzed the current manual flow from end-to-end of how much steps it takes to deliver a defribilator to a patient and the possible issues that could prevent the patien from getting their medical equipment. I noticed that Pluto is able to automate most steps and the most tedious part of emergency medical treatment. I see opportunities of testing this remote locations where it takes hour for people, just to get emergency treatment. A drone is small and fast enough to go directly to the location with 0 blockers. Our research revealed that the biggest blocker wasn't technology—it was trust. Users needed to believe the drone would arrive. That insight shaped our entire testing strategy.
 
-## Strategy
+### Insights
 
-1. **Mocking an 'Emergency'**
-   I tested this in the largest park that I could find in our city with big trees that could possibly disturb signals to the drone. The drone's task is simple: get 1 handkerchief to a location in the middle of the park that is unpinnable on google maps.
+> The barrier wasn't flying a drone.
+> It was convincing people it would arrive.
+
+## Product Validation Strategy
+
+1. **Experiment**
+
+- Tested delivery in GPS-obstructed environments.
+- Measured successful autonomous completion.
+- Identified signal-loss failure modes.
+- Introduced operational safeguards before expanding testing.
 
 2. **Staggered real life testing**
    I know that I will never get any approvals to do a real life testing, so I aim to stagger our test cases and impact. Alpha stage has proven that the system is at a stable enough success rate to move onto the next impact stage. I started from delivering food, where the impact score caused by a failure is not life threatening, to delivering birthday cakes, where the impact score is more about preventing a 5-year old from crying at their birthday party. It has taken multiple months just to schedule and plan our gradual progress from one impact score to the next. Every decision I made—from the park test to the birthday cake trial—was guided by one question: 'Does this bring us closer to saving lives?
@@ -77,7 +86,7 @@ I analyzed the current manual flow from end-to-end of how much steps it takes to
 > When I saw the first drone successfully deliver a handkerchief in the park, I knew that I was onto something. It wasn't medical equipment—but it was proof of concept.
 
 - 30000+ Drone delivery within 3 months of launch
-- 50% Lagging indicator reduction within 6 months of launch
+- 50% fewer failed delivery reduction within 6 months of launch
 - Clients reported 85% increase of efficiency from their telemetry
 
 <!--
