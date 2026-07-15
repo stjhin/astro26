@@ -2,14 +2,14 @@ export const SITE = {
   URL: "https://stjhin.com",
   TITLE: "Silvialy Tjhin",
   DESCRIPTION:
-    "Product Designer • Design Systems Lead • 0→1 Builder",
+    "Systems thinker simplifying complex products at strategic scale.",
   EMAIL: "stjhin@gmail.com",
 };
 
 export const HOME = {
   TITLE: "Home",
   DESCRIPTION:
-    "A personal portfolio website of Silvialy Tjhin",
+    "Silvialy Tjhin. Systems thinking for enterprise SaaS, AI interaction design, and scalable product architecture.",
 };
 
 export const WORK = {
