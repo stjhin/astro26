@@ -19,6 +19,7 @@ summary:
   - "Synthesized research from Human-AI Interaction, Responsible AI, and accessibility guidelines."
   - "Created reusable patterns for trust, explainability, governance, and AI-assisted workflows."
   - "Demonstrated how AI interactions can scale beyond chat interfaces."
+  - "The challenge wasn't adding AI to products. It was helping users trust AI decisions."
 ---
 
 ## Overview

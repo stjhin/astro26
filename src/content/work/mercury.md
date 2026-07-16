@@ -17,6 +17,7 @@ summary:
   - "Built a scalable design system supporting multiple platforms."
   - "Reached 100K+ users with 75% repeat usage."
   - "Reduced task completion time by approximately 40%."
+  - "The challenge wasn't digitizing logistics. It was making digital workflows feel faster than paper."
 ---
 
 ## Overview

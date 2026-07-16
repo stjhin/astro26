@@ -19,6 +19,7 @@ summary:
   - "Reduced component creation time by 80% through an AI-assisted design-to-code workflow."
   - "Established a shared language between design and engineering using Storybook, Code Connect, and design tokens."
   - "Reduced implementation questions by 70%, improving engineering velocity."
+  - "The challenge wasn't building components. It was reducing ambiguity between designers, engineers, and AI."
 ---
 
 ## Overview
