@@ -7,6 +7,13 @@ image: {
 	url: "/infinity-hero.png",
 	alt: "Infinity thumbnail"
 }
+impacts:
+  - label: "Delivery Speed"
+    value: "+80%"
+  - label: "Applications"
+    value: "40+"
+  - label: "Engineer Adoption"
+    value: "100+"
 ---
 
 ## Overview

@@ -4,6 +4,13 @@ description: "Re-architecting end-to-end Enterprise SaaS Notification Service."
 image:
   url: "/aegis-hero.png"
   alt: "Enterprise notification architecture"
+impacts:
+  - label: "ARR Protected"
+    value: "$500K+"
+  - label: "Dependencies"
+    value: "10+"
+  - label: "Ownership Tiers"
+    value: "4"
 ---
 
 ## Overview

@@ -7,6 +7,13 @@ image:
     url: "/aquila-hero.png",
     alt: "Aquila AI interaction pattern design system",
   }
+impacts:
+  - label: "AI Patterns"
+    value: "15+"
+  - label: "Trust Layers"
+    value: "4"
+  - label: "WCAG Level"
+    value: "AA"
 ---
 
 ## Overview

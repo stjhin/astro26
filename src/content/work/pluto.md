@@ -7,6 +7,13 @@ image: {
 url: "/pluto-hero.png",
 alt:  "pluto thumbnail"
 }
+impacts:
+  - label: "Deliveries"
+    value: "30K+"
+  - label: "Success Rate"
+    value: "+50%"
+  - label: "Efficiency"
+    value: "+85%"
 ---
 
 ## Overview

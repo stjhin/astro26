@@ -81,6 +81,18 @@ const { Content } = await render(item);
                 class="w-full h-full object-contain cursor-pointer"
             />
         </div>
+
+        {item.data.impacts && item.data.impacts.length > 0 && (
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+                {item.data.impacts.map((imp) => (
+                    <div class="bg-primary rounded-2xl p-4 text-center flex flex-col justify-center aspect-square">
+                        <span class="text-[10px] md:text-sm uppercase tracking-wider text-background leading-tight">{imp.label}</span>
+                        <span class="text-2xl md:text-5xl font-bold heading text-background mt-1 md:mt-2">{imp.value}</span>
+                    </div>
+                ))}
+            </div>
+        )}
+
         <article
             id="work-content"
             class="px-3 flex-2 mx-auto border-b border-dashed border-secondary mb-18 prose dark:prose-invert"

@@ -4,6 +4,13 @@ description: Courier dispatcher all-in-one digital product that is available in 
 # liveUrl: https://github.com/stjhin/mercury-demo
 # githubUrl: https://github.com
 image: { url: "/mercury-hero.png", alt: "Mercury thumbnail" }
+impacts:
+  - label: "Users"
+    value: "100K+"
+  - label: "Repeat Rate"
+    value: "75%"
+  - label: "Time Saved"
+    value: "40%"
 ---
 
 ## Overview
