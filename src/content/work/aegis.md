@@ -11,6 +11,12 @@ impacts:
     value: "10+"
   - label: "Ownership Tiers"
     value: "4"
+summary:
+  - "Redesigned the notification architecture for an enterprise ecosystem of 40+ applications."
+  - "Reframed a feature request for mobile push notifications into a scalable communication architecture."
+  - "Introduced a distinction between System-managed and Administrator-managed notifications."
+  - "Protected a $500K+ ARR enterprise renewal by closing a competitive feature gap."
+  - "Established reusable communication patterns for future products across the platform."
 ---
 
 ## Overview

@@ -14,6 +14,11 @@ impacts:
     value: "40+"
   - label: "Engineer Adoption"
     value: "100+"
+summary:
+  - "Built and scaled a design system used across 40+ applications by 100+ engineers."
+  - "Reduced component creation time by 80% through an AI-assisted design-to-code workflow."
+  - "Established a shared language between design and engineering using Storybook, Code Connect, and design tokens."
+  - "Reduced implementation questions by 70%, improving engineering velocity."
 ---
 
 ## Overview

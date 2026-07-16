@@ -17,6 +17,7 @@ const work = defineCollection({
       label: z.string(),
       value: z.string(),
     })).optional(),
+    summary: z.array(z.string()).optional(),
   }),
 });
 

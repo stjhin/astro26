@@ -23,7 +23,7 @@ const links = [
 
 <header class="fixed top-0 w-full z-50">
     <div class="container mx-auto flex items-center justify-between p-6">
-    <a href={withBase("/")} class="font-bold font-mono text-4xl">{initials}.</a>
+    <a href={withBase("/")} class="font-bold font-mono text-4xl text-foreground hover:text-primary transition-colors">{initials}.</a>
         <nav class="space-x-3 text-secondary hidden md:block" aria-label="Main navigation">
             {
                 links.map((link) => (

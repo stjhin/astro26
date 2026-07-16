@@ -86,10 +86,21 @@ const { Content } = await render(item);
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
                 {item.data.impacts.map((imp) => (
                     <div class="bg-primary rounded-2xl p-4 text-center flex flex-col justify-center aspect-square">
-                        <span class="text-[10px] md:text-sm uppercase tracking-wider text-background leading-tight">{imp.label}</span>
-                        <span class="text-2xl md:text-5xl font-bold heading text-background mt-1 md:mt-2">{imp.value}</span>
+                        <span class="text-[10px] md:text-sm uppercase tracking-wider leading-tight" style="color: var(--color-background)">{imp.label}</span>
+                        <span class="text-2xl md:text-5xl font-bold heading mt-1 md:mt-2" style="color: var(--color-background)">{imp.value}</span>
                     </div>
                 ))}
+            </div>
+        )}
+
+        {item.data.summary && item.data.summary.length > 0 && (
+            <div class="bg-primary rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
+                <span class="text-sm md:text-base uppercase tracking-wider font-bold" style="color: var(--color-background)">Executive Summary</span>
+                <ul class="text-base md:text-lg leading-relaxed mt-2 space-y-2 list-disc list-inside" style="color: var(--color-background)">
+                    {item.data.summary.map((point) => (
+                        <li>{point}</li>
+                    ))}
+                </ul>
             </div>
         )}
 

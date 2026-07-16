@@ -14,6 +14,11 @@ impacts:
     value: "4"
   - label: "WCAG Level"
     value: "AA"
+summary:
+  - "Designed a reusable interaction framework for enterprise AI products."
+  - "Synthesized research from Human-AI Interaction, Responsible AI, and accessibility guidelines."
+  - "Created reusable patterns for trust, explainability, governance, and AI-assisted workflows."
+  - "Demonstrated how AI interactions can scale beyond chat interfaces."
 ---
 
 ## Overview

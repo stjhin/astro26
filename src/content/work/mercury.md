@@ -11,6 +11,12 @@ impacts:
     value: "75%"
   - label: "Time Saved"
     value: "40%"
+summary:
+  - "Led product design across 5 logistics products spanning web and mobile."
+  - "Simplified digital workflows for first-time enterprise users."
+  - "Built a scalable design system supporting multiple platforms."
+  - "Reached 100K+ users with 75% repeat usage."
+  - "Reduced task completion time by approximately 40%."
 ---
 
 ## Overview
