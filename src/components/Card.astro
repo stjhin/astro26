@@ -124,7 +124,7 @@ const withBase = (path: string) => {
             {entry.data.description}
         </p>
         {entry.data.impacts && entry.data.impacts.length > 0 && (
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-xl mx-auto md:mx-0 pt-2">
+            <div class="grid gap-3 md:gap-4 max-w-xl mx-auto md:mx-0 pt-2" style={`grid-template-columns: repeat(${entry.data.impacts.length}, minmax(0, 1fr))`}>
                 {entry.data.impacts.map((item) => (
                     <div class="bg-primary rounded-2xl p-3 md:p-4 text-center flex flex-col justify-center aspect-square">
                         <span class="text-[10px] md:text-sm uppercase tracking-wider leading-tight" style="color: var(--color-background)">{item.label}</span>
