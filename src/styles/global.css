@@ -15,6 +15,9 @@
   --color-tertiary: rgb(100, 115, 140); /* #64738C — 4.89:1 on white (was #8a9ab0 at 3.08:1) */
   /* background pattern dot color (used by Layout.astro radial gradient). */
   --pattern-dot: rgba(0, 7, 27, 0.20);
+
+  /* nav chrome — sticky header translucent overlay */
+  --nav-bg: rgba(254, 254, 254, 0.1);
 }
 
 /* Dark mode token overrides */
@@ -26,6 +29,9 @@ html.dark {
   --color-tertiary: rgb(130, 140, 160);   /* #828CA0 — 5.46:1 on dark bg (was #6E788C at 4.27:1) */
   /* subtle light dots on dark background */
   --pattern-dot: rgba(255, 255, 255, 0.06);
+
+  /* nav chrome — dark mode */
+  --nav-bg: rgba(10, 12, 18, 0.1);
 }
 
 .heading {
