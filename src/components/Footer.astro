@@ -13,46 +13,63 @@ const withBase = (path: string) => {
 };
 ---
 
-<footer class="bg-primary container mx-auto rounded-t-[80px] p-10 space-y-8 site-footer" role="contentinfo">
+<footer
+  class="bg-primary container mx-auto rounded-t-[80px] p-10 space-y-8 site-footer"
+  role="contentinfo"
+>
   <div
     class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6"
   >
-    <a href={withBase("/")}><h3 class="heading text-3xl md:text-5xl uppercase" style="color: var(--color-background)">{SITE.TITLE}</h3></a>
-    <p class="text-xl lg:text-2xl max-w-[760px]" style="color: var(--color-background)">
-      Simplicity is the ultimate sophistication — especially in design.
+    <a href={withBase("/")}
+      ><h3
+        class="heading text-3xl md:text-5xl uppercase"
+        style="color: var(--color-background)"
+      >
+        {SITE.TITLE}
+      </h3></a
+    >
+    <p
+      class="text-xl lg:text-2xl max-w-[760px]"
+      style="color: var(--color-background)"
+    >
+      Craft is the result of good taste implemented through a system.
     </p>
   </div>
   <div class="flex flex-col sm:flex-row sm:flex-wrap justify-between gap-10">
-    
     <div>
-  <h3 class="mb-2 text-xl text-background">Navigation</h3>
+      <h3 class="mb-2 text-xl text-background">Navigation</h3>
       <ul class="space-y-1 text-secondary nav-links">
         <li><a href={withBase("/")}>Home</a></li>
         <li><a href={withBase("/about")}>About</a></li>
         <li><a href={withBase("/work")}>Work</a></li>
         <li><a href={withBase("/resume")}>Resume</a></li>
-        
       </ul>
     </div>
     <div>
-  <h3 class="mb-2 text-xl text-background">Links</h3>
-        <ul class="space-y-1 text-secondary nav-links">
+      <h3 class="mb-2 text-xl text-background">Links</h3>
+      <ul class="space-y-1 text-secondary nav-links">
         {
           LINKS.map((link) => (
             <li>
-              <a href={link.HREF.startsWith("/") ? withBase(link.HREF) : link.HREF}>{link.NAME}</a>
+              <a
+                href={
+                  link.HREF.startsWith("/") ? withBase(link.HREF) : link.HREF
+                }
+              >
+                {link.NAME}
+              </a>
             </li>
           ))
         }
       </ul>
     </div>
     <div>
-  <h3 class="mb-2 text-xl text-background">Work</h3>
-        <ul class="space-y-1 text-secondary nav-links">
+      <h3 class="mb-2 text-xl text-background">Work</h3>
+      <ul class="space-y-1 text-secondary nav-links">
         {
           WorkItems.map((item) => (
             <li>
-                <a href={withBase(`/work/${item.id}`)}>{item.data.title}</a>
+              <a href={withBase(`/work/${item.id}`)}>{item.data.title}</a>
             </li>
           ))
         }

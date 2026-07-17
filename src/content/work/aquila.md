@@ -64,6 +64,60 @@ Aquila is my exploration of what reusable AI interaction patterns could look lik
 
 ---
 
+## Design Process
+
+Summary of my process:
+
+### 1. Understand the problem
+
+This is the phase where I try to map the whole product experiences holistically. Cross-functional workshops to get constraints are my go-to tool at this phase.
+
+- User workflows
+- Business goals
+- Decision points
+- Where AI could actually help
+
+### 2. Understand the technology
+
+This phase I fully invest my time to understand the technology: where is the back-end to front-end touch point, what is the latency, how will trust be established, etc. are the type of questions that I asks and explored.
+
+- LLM capabilities
+- Constraints
+- Latency
+- Reliability
+- Available context
+
+### 3. Design AI interactions
+
+I start mapping out the touch point and where exactly a front-end UI is needed for AI to interact with users. It's easy to look at other launched products, but to design something scalable and consider that this interaction might not be used in a chatbot, I decided to componentize each Human-AI interaction.
+
+- Streaming
+- Explainability
+- Confidence
+- Human control
+- Feedback loops
+
+### 4. Validate & Implementation
+
+I prototyped the component on Storybook JS to test it in a controlled environment for a small sample size before scaling it up and test if this would work for 40+ applications within the whole enterprise platform. I want to find out things such as:
+
+> - What decisions are users making?
+> - Where do they hesitate?
+> - Which tasks have the highest cognitive load?
+> - Where is trust breaking down?
+> - Which failures matter most when interacting with AI?
+
+- Components on Storybook to test:
+  - AI accuracy
+  - User trust
+  - Task completion
+  - Failure cases
+- Design system
+- Implementation guidance
+- Measurement
+
+---
+
 ## Design Challenge
 
 Large Language Models are becoming increasingly easy to integrate.
@@ -301,4 +355,4 @@ Instead of optimizing for a single product, every interaction pattern needed to 
 
 ---
 
-> AI interfaces shouldn't simply generate answers. They should help people understand, trust, and confidently work alongside intelligent systems.
+> I always start from the Why, How, What.
