@@ -1,6 +1,9 @@
 ---
 title: "Infinity Design System"
 description: "Design system with MCP automation for AI workflow end-to-end pipeline."
+seo:
+  title: "Enterprise Design System — Scaling 40+ Apps with MCP & AI Automation"
+  description: "Enterprise design system scaling 40+ apps and 100+ engineers. Built with Figma, Storybook, design tokens, and MCP-powered AI workflows for 80% faster component creation."
 liveUrl: https://stjhin.github.io/infinity
 # githubUrl:
 image: {

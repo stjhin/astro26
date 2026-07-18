@@ -1,6 +1,9 @@
 ---
 title: "Aegis"
 description: "Re-architecting end-to-end Enterprise SaaS Notification Service."
+seo:
+  title: "Enterprise Notification Architecture — SaaS Communication at Scale"
+  description: "Enterprise notification architecture redesign across 40+ applications. Introduced System-managed vs Administrator-managed ownership model. Protected $500K+ ARR, reduced onboarding complexity."
 image:
   url: "/aegis-hero.png"
   alt: "Enterprise notification architecture"

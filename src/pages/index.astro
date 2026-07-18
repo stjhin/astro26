@@ -5,15 +5,33 @@ import Card from "@/components/Card.astro";
 import Hero from "@/components/Hero.astro";
 import VisitorCounter from "@/components/VisitorCounter.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
-import { HOME } from "@/consts";
+import { HOME, SITE } from "@/consts";
 
 const allWork: CollectionEntry<"work">[] = (await getCollection("work")).slice(
   0,
   5,
 );
+
+const siteOrigin = (Astro.site?.href || SITE.URL).replace(/\/+$/, "");
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+const homeUrl = `${siteOrigin}${baseUrl}`;
+const homeJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": SITE.TITLE,
+    "description": SITE.DESCRIPTION,
+    "url": homeUrl,
+    "author": {
+        "@type": "Person",
+        "name": SITE.TITLE,
+        "url": SITE.URL,
+    },
+};
 ---
 
-<Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+<Layout title={HOME.TITLE} description={HOME.DESCRIPTION} pageUrl={homeUrl} jsonLd={homeJsonLd}>
   <Hero />
   <div class="container mx-auto px-6 pb-8 flex justify-end">
     <VisitorCounter />

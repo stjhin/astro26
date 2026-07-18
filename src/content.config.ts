@@ -18,6 +18,10 @@ const work = defineCollection({
       value: z.string(),
     })).optional(),
     summary: z.array(z.string()).optional(),
+    seo: z.object({
+      title: z.string().optional(),
+      description: z.string().optional(),
+    }).optional(),
   }),
 });
 

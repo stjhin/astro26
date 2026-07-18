@@ -1,6 +1,9 @@
 ---
 title: "Aquila"
 description: "From Research to implementing reusable AI interaction patterns within design system."
+seo:
+  title: "AI Interaction Patterns for Enterprise — Reusable Design System Components"
+  description: "Reusable AI interaction patterns for enterprise products. Trust, explainability, and governance baked into a design system. 15+ patterns, WCAG AA compliant, built in Storybook."
 liveUrl: https://stjhin.github.io/infinity/?path=/story/ai-patterns-overview--ai-chat
 image:
   {

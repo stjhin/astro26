@@ -6,6 +6,8 @@ interface Props {
     title: string;
     description: string;
     image?: string;
+    pageUrl?: string;
+    jsonLd?: Record<string, unknown>;
 }
 
 const withBase = (path: string) => {
@@ -14,7 +16,9 @@ const withBase = (path: string) => {
         : `${import.meta.env.BASE_URL}/`;
     return `${base}${path.replace(/^\/+/, "")}`;
 };
-const { title, description, image = withBase("/placeholder.png") } = Astro.props;
+const { title, description, image = withBase("/placeholder.png"), pageUrl, jsonLd } = Astro.props;
+
+const ogImage = image.startsWith("http") ? image : new URL(image, Astro.site).href;
 ---
 
 <meta charset="UTF-8" />
@@ -29,6 +33,28 @@ const { title, description, image = withBase("/placeholder.png") } = Astro.props
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+
+<!-- Canonical URL -->
+{pageUrl && <link rel="canonical" href={pageUrl} />}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+{pageUrl && <meta property="og:url" content={pageUrl} />}
+<meta property="og:site_name" content="Silvialy Tjhin" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- JSON-LD Structured Data -->
+{jsonLd && (
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+)}
 
 <!-- fonts -->
 <!-- Theme preloader: apply saved theme before paint to avoid flash -->

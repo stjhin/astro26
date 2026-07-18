@@ -1,6 +1,9 @@
 ---
 title: Mercury
 description: Courier dispatcher all-in-one digital product that is available in multi-platform.
+seo:
+  title: "Multi-Platform Logistics Platform — Courier Management for 100K+ Users"
+  description: "All-in-one logistics platform across web and mobile. 100K+ users, 75% repeat rate, 40% faster task completion. Design system with 50+ Figma components and error state library."
 # liveUrl: https://github.com/stjhin/mercury-demo
 # githubUrl: https://github.com
 image: { url: "/mercury-hero.png", alt: "Mercury thumbnail" }

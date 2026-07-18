@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { SITE } from "@/consts";
 import { getCollection, render, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
@@ -18,9 +19,40 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     : `${import.meta.env.BASE_URL}/`;
 
 const { Content } = await render(item);
+
+// --- SEO: prefer explicit seo overrides, fall back to title/description ---
+const seoTitle = item.data.seo?.title || item.data.title;
+const seoDescription = item.data.seo?.description || item.data.description;
+
+// Construct full canonical URL
+const siteOrigin = (Astro.site?.href || SITE.URL).replace(/\/+$/, "");
+const pageUrl = `${siteOrigin}${baseUrl}work/${item.id}/`;
+
+// Construct full image URL for og:image and JSON-LD
+const rawImagePath = item.data.image.url.replace(/^\/+/, "");
+const workImage = `${baseUrl}${rawImagePath}`;
+
+// JSON-LD structured data (TechArticle schema — tells Google this is a technical portfolio piece)
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": seoTitle,
+    "description": seoDescription,
+    "image": `${siteOrigin}${workImage}`,
+    "author": {
+        "@type": "Person",
+        "name": "Silvialy Tjhin",
+        "url": SITE.URL,
+    },
+    "about": item.data.title,
+    "publisher": {
+        "@type": "Person",
+        "name": "Silvialy Tjhin",
+    },
+};
 ---
 
-<Layout title={item.data.title} description={item.data.description}>
+<Layout title={seoTitle} description={seoDescription} image={workImage} pageUrl={pageUrl} jsonLd={jsonLd}>
     <div class="container mx-auto space-y-8 pt-18 px-6">
         <button
             class="flex gap-2 items-center text-secondary hover:text-primary cursor-pointer pl-2 my-6"

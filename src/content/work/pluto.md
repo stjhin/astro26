@@ -1,6 +1,9 @@
 ---
 title: "Pluto"
 description: "Drone management software for medical equipment deliveries."
+seo:
+  title: "Drone Delivery Platform — Medical Equipment Logistics for First Responders"
+  description: "Drone logistics platform for autonomous medical equipment delivery. 30K+ deliveries, 85% efficiency gains, 50% fewer failures. MVP-to-beta product design for first aid responders."
 liveUrl: https://stjhin.github.io/pluto/
 # githubUrl: https://github.com
 image: {
