@@ -1,0 +1,31 @@
+---
+// Redirect /projects/* → /work/* for legacy URLs
+// This page exists because the site previously used /projects/ routes
+// before they were renamed to /work/. Old bookmarks and links should
+// not 404 — they should land on the correct work detail page.
+
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const allWork: CollectionEntry<"work">[] = await getCollection("work");
+  return allWork.map((item) => ({
+    params: { id: item.id },
+  }));
+}
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="0;url=/work/" />
+  <title>Redirecting…</title>
+</head>
+<body>
+  <p>This page has moved. Redirecting…</p>
+  <script>
+    window.location.replace(
+      window.location.pathname.replace("/projects/", "/work/")
+    );
+  </script>
+</body>
+</html>

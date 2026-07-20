@@ -12,6 +12,22 @@ const homeUrl = import.meta.env.BASE_URL.endsWith("/")
         <p class="text-secondary">
             What you seek never existed, or perhaps has ceased to exist.
         </p>
+        <p id="redirect-msg" class="text-secondary hidden">
+            Redirecting you to the right place…
+        </p>
             <a href={homeUrl} class="cursor-pointer underline">&larr; Go Back</a>
     </div>
+
+    <script is:inline>
+        // Redirect legacy /projects/* URLs to /work/*
+        (function() {
+            var path = window.location.pathname;
+            var target = path.replace("/projects/", "/work/");
+            if (target !== path) {
+                var msg = document.getElementById("redirect-msg");
+                if (msg) { msg.classList.remove("hidden"); }
+                window.location.replace(target);
+            }
+        })();
+    </script>
 </Layout>
