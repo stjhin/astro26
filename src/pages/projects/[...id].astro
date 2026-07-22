@@ -3,6 +3,8 @@
 // This page exists because the site previously used /projects/ routes
 // before they were renamed to /work/. Old bookmarks and links should
 // not 404 — they should land on the correct work detail page.
+// Excluded from sitemap: these are redirect stubs, not content pages.
+sitemap: false
 
 import { getCollection, type CollectionEntry } from "astro:content";
 
@@ -12,12 +14,17 @@ export async function getStaticPaths() {
     params: { id: item.id },
   }));
 }
+
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const workUrl = `${baseUrl}work/`;
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0;url=/work/" />
+  <meta http-equiv="refresh" content={`0;url=${workUrl}`} />
   <title>Redirecting…</title>
 </head>
 <body>

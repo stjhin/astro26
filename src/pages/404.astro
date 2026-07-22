@@ -1,9 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { SITE } from "@/consts";
-const homeUrl = import.meta.env.BASE_URL.endsWith("/")
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     ? import.meta.env.BASE_URL
     : `${import.meta.env.BASE_URL}/`;
+const homeUrl = baseUrl;
+const workUrl = `${baseUrl}work/`;
 ---
 
 <Layout title="Page Not Found" description={SITE.DESCRIPTION}>
@@ -19,14 +21,16 @@ const homeUrl = import.meta.env.BASE_URL.endsWith("/")
     </div>
 
     <script is:inline>
-        // Redirect legacy /projects/* URLs to /work/*
+        // Redirect legacy /projects/* URLs to the /work/ index.
+        // Known slugs (aegis, aquila, etc.) are handled by
+        // projects/[...id].astro with slug-preserving redirects.
+        // Unknown slugs land here and go to /work/ to avoid a 404 chain.
         (function() {
             var path = window.location.pathname;
-            var target = path.replace("/projects/", "/work/");
-            if (target !== path) {
+            if (path.indexOf("/projects/") !== -1) {
                 var msg = document.getElementById("redirect-msg");
                 if (msg) { msg.classList.remove("hidden"); }
-                window.location.replace(target);
+                window.location.replace("{workUrl}");
             }
         })();
     </script>
