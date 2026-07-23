@@ -212,6 +212,8 @@ Every notification first receives a priority level based on business impact. The
 | Notification Center Drawer | Medium         | Persistent messages and activity history                        |
 | Badge                      | Low            | Passive awareness of unread notifications                       |
 
+![](/aegis-create.png)
+
 ### Respect user attention
 
 Not every event deserves an interruption. Critical events surface immediately, while lower-priority communication remains accessible through the Notification Center. Every notification is retained as an auditable record, balancing user attention with enterprise compliance requirements.
@@ -270,6 +272,8 @@ This separation allowed products to share a common communication architecture wh
 | Organization Announcement | **Administrator** | **Administrator** |
 
 After the ownership has been defined, then designing each product and feature would be straightforward as they all have a clearer picture of who is the user and what is their priority.
+
+![](/aegis-manage.png)
 
 ---
 

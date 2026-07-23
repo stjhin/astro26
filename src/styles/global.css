@@ -87,6 +87,17 @@ article img {
   max-width: 100%;
 }
 
+/* ── Image hover zoom ─────────────────────────────────────────── */
+img {
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.5);
+  z-index: 10;
+  position: relative;
+}
+
 article a {
   text-decoration: underline;
   text-underline-offset: 2px;
