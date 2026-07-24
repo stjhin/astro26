@@ -2,7 +2,7 @@ export const SITE = {
   URL: "https://stjhin.com",
   TITLE: "Silvialy Tjhin",
   DESCRIPTION:
-    "Designing systems that simplify complex enterprise products.",
+    "Designing systems that simplify complexity for people.",
   EMAIL: "stjhin@gmail.com",
 };
 
