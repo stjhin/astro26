@@ -19,10 +19,11 @@ impacts:
     value: "100+"
 summary:
   - "Built and scaled a design system used across 40+ applications by 100+ engineers."
-  - "Reduced component creation time by 80% through an AI-assisted design-to-code workflow."
-  - "Established a shared language between design and engineering using Storybook, Code Connect, and design tokens."
-  - "Reduced implementation questions by 70%, improving engineering velocity."
-  - "The challenge wasn't building components. It was reducing ambiguity between designers, engineers, and AI."
+  - "Problem / Assumption: The challenge wasn't building reusable components. It was reducing ambiguity between design and engineering across an ecosystem of 40+ applications and 100+ engineers."
+  - "Design Decision: Established a shared design-to-code language using Storybook, Code Connect, and design tokens, connecting design specifications with implementation."
+  - "Trade-off: Balanced component flexibility with standardization, ensuring components could support different product requirements without fragmenting the design system."
+  - "Business Impact: Reduced component creation time by 80% through an AI-assisted design-to-code workflow and reduced implementation questions by 70%, improving engineering velocity."
+  - "Key Insight: A design system is only effective when its components, specifications, and implementation communicate the same intent."
 ---
 
 ## Overview

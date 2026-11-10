@@ -1,0 +1,580 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="dark" style="scroll-behavior: auto;"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" href="/favicon-32x32.png"><meta name="generator" content="Astro v7.2.2"><!-- Primary Meta Tags --><title>Enterprise Notification Architecture — SaaS Communication at Scale | Silvialy Tjhin</title><meta name="title" content="Enterprise Notification Architecture — SaaS Communication at Scale | Silvialy Tjhin"><meta name="description" content="Enterprise notification architecture redesign across 40+ applications. Introduced System-managed vs Administrator-managed ownership model. Protected $500K+ ARR, reduced onboarding complexity."><!-- Canonical URL --><link rel="canonical" href="https://stjhin.com/work/aegis/"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:title" content="Enterprise Notification Architecture — SaaS Communication at Scale | Silvialy Tjhin"><meta property="og:description" content="Enterprise notification architecture redesign across 40+ applications. Introduced System-managed vs Administrator-managed ownership model. Protected $500K+ ARR, reduced onboarding complexity."><meta property="og:image" content="https://stjhin.com/aegis-hero.png"><meta property="og:url" content="https://stjhin.com/work/aegis/"><meta property="og:site_name" content="Silvialy Tjhin"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Enterprise Notification Architecture — SaaS Communication at Scale | Silvialy Tjhin"><meta name="twitter:description" content="Enterprise notification architecture redesign across 40+ applications. Introduced System-managed vs Administrator-managed ownership model. Protected $500K+ ARR, reduced onboarding complexity."><meta name="twitter:image" content="https://stjhin.com/aegis-hero.png"><!-- JSON-LD Structured Data --><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Enterprise Notification Architecture — SaaS Communication at Scale","description":"Enterprise notification architecture redesign across 40+ applications. Introduced System-managed vs Administrator-managed ownership model. Protected $500K+ ARR, reduced onboarding complexity.","image":"https://stjhin.com/aegis-hero.png","author":{"@type":"Person","name":"Silvialy Tjhin","url":"https://stjhin.com"},"about":"Aegis","publisher":{"@type":"Person","name":"Silvialy Tjhin"}}</script><!-- fonts --><!-- Theme preloader: apply saved theme before paint to avoid flash --><script type="module">(function(){let e=window,t=`site-theme`,n=`dark`;function r(e){e===`dark`?document.documentElement.classList.add(n):document.documentElement.classList.remove(n)}let i=(function(){try{return localStorage.getItem(t)}catch{return null}})();r(i===`dark`||i===`light`?i:`dark`),e.toggleTheme=function(){let e=document.documentElement.classList.toggle(n);try{localStorage.setItem(t,e?`dark`:`light`)}catch{}return e?`dark`:`light`}})();</script><style>@font-face{font-family:"Roboto Mono-5f8cd71dd5a9b46e";src:url("/_astro/fonts/486b3fbb1821526a.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"Roboto Mono-5f8cd71dd5a9b46e";src:url("/_astro/fonts/8c795b88d4cc61cb.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"Roboto Mono-5f8cd71dd5a9b46e fallback: Arial";src:local("Arial");font-display:swap;font-weight:400;font-style:italic;size-adjust:131.6539%;ascent-override:79.5914%;descent-override:20.584%;line-gap-override:0%;}@font-face{font-family:"Roboto Mono-5f8cd71dd5a9b46e fallback: Arial";src:local("Arial");font-display:swap;font-weight:400;font-style:normal;size-adjust:131.6539%;ascent-override:79.5914%;descent-override:20.584%;line-gap-override:0%;}:root{--font-mono:"Roboto Mono-5f8cd71dd5a9b46e","Roboto Mono-5f8cd71dd5a9b46e fallback: Arial",sans-serif;}</style><link rel="preload" href="/_astro/fonts/486b3fbb1821526a.woff2" as="font" type="font/woff2" crossorigin=""><link rel="preload" href="/_astro/fonts/8c795b88d4cc61cb.woff2" as="font" type="font/woff2" crossorigin=""><style>@font-face{font-family:"Noto Sans-01cc9bd4d4c2a6e9";src:url("/_astro/fonts/17e8047aeafa1a85.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"Noto Sans-01cc9bd4d4c2a6e9";src:url("/_astro/fonts/ea0059baf639a718.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"Noto Sans-01cc9bd4d4c2a6e9 fallback: Arial";src:local("Arial");font-display:swap;font-weight:400;font-style:italic;size-adjust:100.269%;ascent-override:106.6132%;descent-override:29.2214%;line-gap-override:0%;}@font-face{font-family:"Noto Sans-01cc9bd4d4c2a6e9 fallback: Arial";src:local("Arial");font-display:swap;font-weight:400;font-style:normal;size-adjust:100.269%;ascent-override:106.6132%;descent-override:29.2214%;line-gap-override:0%;}:root{--font-sans:"Noto Sans-01cc9bd4d4c2a6e9","Noto Sans-01cc9bd4d4c2a6e9 fallback: Arial",sans-serif;}</style><link rel="preload" href="/_astro/fonts/17e8047aeafa1a85.woff2" as="font" type="font/woff2" crossorigin=""><link rel="preload" href="/_astro/fonts/ea0059baf639a718.woff2" as="font" type="font/woff2" crossorigin=""><link rel="stylesheet" href="/_astro/Layout.BYapGO-o.css"></head><body><a href="#main-content" class="skip-link">Skip to content</a><header class="fixed top-0 w-full z-50" data-astro-cid-nen7h5rs=""><div class="container mx-auto flex items-center justify-between p-6" data-astro-cid-nen7h5rs=""><a href="/" class="font-bold font-mono text-4xl text-foreground hover:text-primary transition-colors" data-astro-cid-nen7h5rs="">S.T.</a><nav class="space-x-3 text-foreground hidden md:block" aria-label="Main navigation" data-astro-cid-nen7h5rs=""><a href="/" class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5" data-astro-cid-nen7h5rs="">Home</a><a href="/about" class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5" data-astro-cid-nen7h5rs="">About</a><a href="/work" class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5" data-astro-cid-nen7h5rs="">Work</a><a href="/resume" class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5" data-astro-cid-nen7h5rs="">Resume</a></nav><div class="flex items-center gap-4" data-astro-cid-nen7h5rs=""><button id="theme-toggle" aria-label="Switch to light mode" aria-pressed="true" class="p-2 rounded hidden md:inline-flex" title="Switch to light mode" data-astro-cid-nen7h5rs=""><svg id="theme-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-astro-cid-nen7h5rs=""><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor" stroke="none"></path></svg></button><button id="menu-toggle" class="hamburger flex md:hidden" aria-label="Toggle navigation" aria-expanded="false" data-astro-cid-nen7h5rs=""><span class="hamburger-line" data-astro-cid-nen7h5rs=""></span><span class="hamburger-line" data-astro-cid-nen7h5rs=""></span><span class="hamburger-line" data-astro-cid-nen7h5rs=""></span></button></div></div><div id="menu-mobile" class="hidden md:hidden space-x-3 text-foreground bg-background backdrop-blur-2xl w-screen p-4" data-astro-cid-nen7h5rs=""><nav class="flex flex-col gap-4 text-2xl" aria-label="Mobile navigation" data-astro-cid-nen7h5rs=""><div class="flex justify-end" data-astro-cid-nen7h5rs=""><button id="theme-toggle-mobile" aria-label="Switch to light mode" aria-pressed="true" class="p-2 rounded inline-flex" title="Switch to light mode" data-astro-cid-nen7h5rs=""><svg id="theme-toggle-icon-mobile" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-astro-cid-nen7h5rs=""><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor" stroke="none"></path></svg></button></div><a href="/" class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5" data-astro-cid-nen7h5rs="">Home</a><a href="/about" class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5" data-astro-cid-nen7h5rs="">About</a><a href="/work" class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5" data-astro-cid-nen7h5rs="">Work</a><a href="/resume" class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5" data-astro-cid-nen7h5rs="">Resume</a></nav></div></header><script type="module">document.addEventListener(`DOMContentLoaded`,()=>{let e=window,t=document.getElementById(`menu-mobile`),n=document.getElementById(`menu-toggle`);n?.addEventListener(`click`,()=>{t?.classList.toggle(`hidden`),n.classList.toggle(`active`);let e=n.classList.contains(`active`);n.setAttribute(`aria-expanded`,String(e))});let r=document.getElementById(`theme-toggle`),i=document.getElementById(`theme-toggle-icon`),a=document.getElementById(`theme-toggle-mobile`),o=document.getElementById(`theme-toggle-icon-mobile`);function s(){let e=document.documentElement.classList.contains(`dark`);r&&(r.setAttribute(`aria-pressed`,e?`true`:`false`),r.setAttribute(`aria-label`,e?`Switch to light mode`:`Switch to dark mode`),r.title=e?`Switch to light mode`:`Switch to dark mode`),a&&(a.setAttribute(`aria-pressed`,e?`true`:`false`),a.setAttribute(`aria-label`,e?`Switch to light mode`:`Switch to dark mode`),a.title=e?`Switch to light mode`:`Switch to dark mode`);function t(t){t&&(e?t.innerHTML=`<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor" stroke="none"></path>`:t.innerHTML=`
+                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                        <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                          <path d="M12 2v2"></path>
+                          <path d="M12 20v2"></path>
+                          <path d="M4.22 4.22l1.42 1.42"></path>
+                          <path d="M18.36 18.36l1.42 1.42"></path>
+                          <path d="M2 12h2"></path>
+                          <path d="M20 12h2"></path>
+                          <path d="M4.22 19.78l1.42-1.42"></path>
+                          <path d="M18.36 5.64l1.42-1.42"></path>
+                        </g>`)}t(i),t(o)}r&&r.addEventListener(`click`,()=>{e.toggleTheme?.(),s()}),a&&a.addEventListener(`click`,()=>{e.toggleTheme?.(),s()}),s()});</script><main id="main-content" class="min-h-screen w-full relative"><div class="fixed inset-0 -z-50 bg-background site-pattern"></div><div class="container mx-auto space-y-8 pt-18 px-6"><button class="flex gap-2 items-center text-secondary hover:text-primary cursor-pointer pl-2 my-6" title="back" id="back-button"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"></path><path d="M2 12H22"></path></svg><span>Back</span></button><div class="flex justify-between md:items-center pb-4 border-b border-dashed border-secondary gap-4 flex-col md:flex-row"><div class="space-y-4"><h1 class="heading text-3xl md:text-5xl uppercase">Aegis</h1><p>Re-architecting end-to-end Enterprise SaaS Notification Service.</p></div><div class="flex flex-col sm:flex-row gap-4"></div></div><div class="w-full lg:h-[70vh] aspect-[610/400] overflow-hidden rounded-2xl"><img id="work-hero" src="/aegis-hero.png" alt="Enterprise notification architecture" class="w-full h-full object-contain cursor-pointer"></div><div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto"><div class="bg-primary rounded-2xl p-4 text-center flex flex-col justify-center aspect-square"><span class="text-[10px] md:text-sm uppercase tracking-wider leading-tight" style="color: var(--color-background)">ARR Protected</span><span class="text-2xl md:text-5xl font-bold heading mt-1 md:mt-2" style="color: var(--color-background)">$500K+</span></div><div class="bg-primary rounded-2xl p-4 text-center flex flex-col justify-center aspect-square"><span class="text-[10px] md:text-sm uppercase tracking-wider leading-tight" style="color: var(--color-background)">Dependencies</span><span class="text-2xl md:text-5xl font-bold heading mt-1 md:mt-2" style="color: var(--color-background)">10+</span></div><div class="bg-primary rounded-2xl p-4 text-center flex flex-col justify-center aspect-square"><span class="text-[10px] md:text-sm uppercase tracking-wider leading-tight" style="color: var(--color-background)">Ownership Tiers</span><span class="text-2xl md:text-5xl font-bold heading mt-1 md:mt-2" style="color: var(--color-background)">4</span></div></div><div class="bg-primary rounded-2xl p-6 md:p-8 max-w-3xl mx-auto"><span class="text-sm md:text-base uppercase tracking-wider font-bold" style="color: var(--color-background)">Executive Summary</span><ul class="text-base md:text-lg leading-relaxed mt-2 space-y-2 list-disc list-inside" style="color: var(--color-background)"><li>Redesigned the notification architecture for an enterprise ecosystem of 40+ applications.</li><li>Reframed a feature request for mobile push notifications into a scalable communication architecture.</li><li>Introduced a distinction between System-managed and Administrator-managed notifications.</li><li>Protected a $500K+ ARR enterprise renewal by closing a competitive feature gap.</li><li>Established reusable communication patterns for future products across the platform.</li><li>The real problem wasn't adding mobile push notifications. It was redesigning how enterprise communication worked across an ecosystem.</li></ul></div><article id="work-content" class="px-3 flex-2 mx-auto border-b border-dashed border-secondary mb-18 prose dark:prose-invert" data-base-url="/"><h2 id="overview">Overview</h2>
+<blockquote>
+<p>Redesigning an enterprise notification architecture to reduce administrative complexity, improve scalability, and support a growing product ecosystem.</p>
+</blockquote>
+<p><strong>Aegis</strong> is a redesign of an enterprise notification service used across a growing ecosystem of products.</p>
+<p>As the platform expanded, every notification had to be configured manually by administrators, including critical system events. What began as a flexible solution became difficult to scale, increasing onboarding effort, support complexity, and creating gaps against competing enterprise platforms.</p>
+<p>Rather than redesigning individual notification screens, I redefined how notifications were owned, configured, and delivered across the product ecosystem.</p>
+<hr>
+<h2 id="my-role">My Role</h2>
+<blockquote>
+<p>Lead Product Designer</p>
+</blockquote>
+<ul>
+<li>🏗 Re-architected the notification service across a 40+ product ecosystem.</li>
+<li>🧩 Defined the interaction model for System and Administrator notifications</li>
+<li>👥 Defined ownership boundaries between the platform, administrators, and end users.</li>
+<li>🤝 Facilitated workshops with Product, Engineering, Customer Support, and Solution Consultants to map notification ownership across the ecosystem</li>
+<li>📚 Established reusable patterns and documentation for future development and iterations</li>
+</ul>
+<hr>
+<h2 id="business-context">Business Context</h2>
+<h3 id="existing-notification-architecture">Existing Notification Architecture</h3>
+<p>Before this project, the platform treated every notification as an <strong>Administrator-managed notification</strong>. Whether it was a password reset, compliance reminder, or organization announcement, administrators were responsible for configuring it before users could receive it.</p>
+<p>Below is the MVP flow that Administrator has to go through for each notification:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Administrator creates notification for both system and organization event</span></span>
+<span class="line"><span>      v</span></span>
+<span class="line"><span>Configure recipients</span></span>
+<span class="line"><span>      v</span></span>
+<span class="line"><span>Configure schedule</span></span>
+<span class="line"><span>      v</span></span>
+<span class="line"><span>Send notification</span></span></code></pre>
+<p>The platform handled only a handful of hard-coded system events, such as password resets and authentication emails. Everything else relied on administrator-created notifications.</p>
+<p>As the platform expanded into an ecosystem of 40+ applications, this model became increasingly difficult to maintain.</p>
+<p>Every application introduced its own notification templates and configuration requirements. Administrators were responsible for setting up every notification individually, even for common system events that should behave consistently across the platform.</p>
+<p>For a customer deploying multiple applications, onboarding meant configuring thousands of notifications one by one before the system was fully operational.</p>
+<p>This existing architecture framework created several operational problems:</p>
+<ul>
+<li>Critical system notifications required manual administrator setup before they could function.</li>
+<li>Every customer configured notifications differently, making support issues difficult to reproduce and troubleshoot.</li>
+<li>Enterprise onboarding became slower as organizations adopted more products.</li>
+<li>Product teams repeatedly implemented notification logic instead of sharing a common platform service.</li>
+<li>Missing notification capabilities created risk during competitive enterprise RFPs.</li>
+</ul>
+<h2 id="discovery">Discovery</h2>
+<p>To understand the existing architecture, I facilitated workshops with:</p>
+<ul>
+<li>Product Managers</li>
+<li>Engineering</li>
+<li>Customer Support</li>
+<li>Solution Consultants</li>
+</ul>
+<p>Together we mapped:</p>
+<ul>
+<li>notification ownership</li>
+<li>notification lifecycle</li>
+<li>product dependencies</li>
+<li>configuration pain points</li>
+<li>enterprise onboarding flow</li>
+</ul>
+<p>Mapping the notification lifecycle across products revealed that the real problem wasn’t notification delivery. It was ownership. Every team had built notifications independently, but no one owned communication as a platform capability.</p>
+<h3 id="enterprise-products-communicate-constantly">Enterprise products communicate constantly.</h3>
+<ul>
+<li>
+<p>Password resets.</p>
+</li>
+<li>
+<p>Compliance reminders.</p>
+</li>
+<li>
+<p>Training assignments.</p>
+</li>
+<li>
+<p>Workflow failures.</p>
+</li>
+<li>
+<p>System maintenance.</p>
+</li>
+<li>
+<p>Administrator announcements.</p>
+</li>
+</ul>
+<p>Without a shared communication model, users receive too many notifications, administrators lose control, and important information becomes difficult to distinguish from routine updates.</p>
+<blockquote>
+<p><strong>How might we design a communication architecture that balances platform automation with organizational flexibility?</strong></p>
+</blockquote>
+<p>The challenge wasn’t designing individual notification components.</p>
+<p>It was designing the rules, relationships, and workflows that govern how communication happens across an enterprise product ecosystem.</p>
+<h3 id="multiple-user-personas">Multiple user personas</h3>
+<p>There are at least 3 main user personas:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Owner</th>
+<th>Responsibility</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><strong>Platform</strong></td>
+<td>System-generated notifications</td>
+<td>Password reset, authentication, compliance</td>
+</tr>
+<tr>
+<td>1</td>
+<td><strong>Administrator</strong></td>
+<td>Organization notifications</td>
+<td>Announcements, scheduled reminders, campaigns</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>End User</strong></td>
+<td>Receives both</td>
+<td>Unified notification experience</td>
+</tr>
+</tbody>
+</table>
+<p>End users have the most variant as it is possible for there to be 1 end user with permission to only 1 application or View only access. That would create variants to what notifications they get too.</p>
+<hr>
+<h2 id="design-insight">Design Insight</h2>
+<h3 id="the-turning-point">The Turning Point</h3>
+<p>The project changed direction once we stopped asking:</p>
+<blockquote>
+<p>“How do we improve notifications?”</p>
+</blockquote>
+<p>and started asking:</p>
+<blockquote>
+<p>“Who owns communication?”</p>
+</blockquote>
+<p>That single question revealed that we weren’t designing one notification system.</p>
+<p>We were designing two fundamentally different communication models.</p>
+<p>Through research and collaboration with Product and Engineering, I found that enterprise notifications generally fall into two categories.</p>
+<p>The platform didn’t have a notification problem. It had an ownership problem.</p>
+<p>By treating every notification as administrator-managed, the platform coupled critical system communication with customer configuration. As the ecosystem grew, that decision increased onboarding effort, fragmented the user experience, and made the platform harder to support and extend.</p>
+<p>The strategy therefore wasn’t to redesign notifications.</p>
+<p>It was to redesign ownership.</p>
+<h3 id="system-notifications">System Notifications</h3>
+<p>Generated automatically by ecosystem events, seen and consumed by every user persona.</p>
+<p>Examples include:</p>
+<ul>
+<li>Password resets</li>
+<li>Authentication alerts</li>
+<li>Compliance reminders</li>
+<li>Training assignments</li>
+<li>Workflow failures</li>
+</ul>
+<p>These notifications are owned by the product and ensure critical information always reaches the appropriate users.</p>
+<h3 id="administrator-notifications">Administrator Notifications</h3>
+<p>Created and managed by Administrators, one user persona, for other user persona within the ecosystem.</p>
+<p>Administrators configure:</p>
+<ul>
+<li>Notification Channels</li>
+<li>Announcement</li>
+<li>Time-Sensitive Event Schedule</li>
+<li>Time and/or Event-based Recurrence</li>
+<li>Communication Templates</li>
+<li>Notification Preferences</li>
+</ul>
+<p>These allow organizations to communicate information specific to their own operational needs while maintaining consistency across the ecosystem.</p>
+<hr>
+<h2 id="design-decisions">Design Decisions</h2>
+<h3 id="communicate-with-purpose">Communicate with purpose</h3>
+<p>Every notification should help users understand what happened, why it matters, and what action to take next.</p>
+<h3 id="give-administrators-control">Give administrators control</h3>
+<p>Organizations need flexibility to manage communication without compromising consistency or overwhelming users.
+Every notification first receives a priority level based on business impact. The platform then determines the appropriate presentation pattern. This prevents product teams from using disruptive UI patterns for low-value information and creates a consistent communication experience across all 40+ applications.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Priority Level</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modal</td>
+<td>Time-Sensitive</td>
+<td>Critical events that require immediate action</td>
+</tr>
+<tr>
+<td>Alert Banner</td>
+<td>Immediate</td>
+<td>High-priority information that should remain visibly persistent</td>
+</tr>
+<tr>
+<td>Toast</td>
+<td>High</td>
+<td>Immediate confirmation or short-lived status updates</td>
+</tr>
+<tr>
+<td>Notification Center Drawer</td>
+<td>Medium</td>
+<td>Persistent messages and activity history</td>
+</tr>
+<tr>
+<td>Badge</td>
+<td>Low</td>
+<td>Passive awareness of unread notifications</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/aegis-create.png" alt="" class="cursor-pointer"></p>
+<h3 id="respect-user-attention">Respect user attention</h3>
+<p>Not every event deserves an interruption. Critical events surface immediately, while lower-priority communication remains accessible through the Notification Center. Every notification is retained as an auditable record, balancing user attention with enterprise compliance requirements.</p>
+<h3 id="design-for-scale">Design for scale</h3>
+<p>Communication patterns should work consistently across multiple products, teams, and user roles within multiple platforms in the ecosystem.</p>
+<hr>
+<h2 id="solution">Solution</h2>
+<p>The redesign transformed notifications from an application feature into a shared platform capability.</p>
+<p><img src="/aegis-ia.jpg" alt="" class="cursor-pointer"></p>
+<h3 id="architecture-decisions">Architecture Decisions</h3>
+<p>The new notification service established clear ownership boundaries between platform-managed and organization-managed communication.</p>
+<h3 id="platform-owned">Platform-owned</h3>
+<p>Managed centrally by the platform to ensure every user received consistent system communication.</p>
+<p>Examples included:</p>
+<ul>
+<li>Authentication</li>
+<li>Password management</li>
+<li>Compliance reminders</li>
+<li>System maintenance</li>
+<li>Workflow failures</li>
+</ul>
+<p>These notifications required no manual configuration and became reusable services that future products could consume.</p>
+<h3 id="organization-owned">Organization-owned</h3>
+<p>Managed by Administrators to support each organization’s operational needs.</p>
+<p>Administrators could configure:</p>
+<ul>
+<li>Delivery channels</li>
+<li>Scheduling and recurrence</li>
+<li>Audience targeting</li>
+<li>Severity and priority</li>
+<li>Organization-specific announcements</li>
+</ul>
+<p>This separation allowed products to share a common communication architecture while remaining flexible enough for different industries and compliance requirements.</p>
+<h3 id="redefining-notification-ownership">Redefining Notification Ownership</h3>
+<table>
+<thead>
+<tr>
+<th>Notifications</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Password Reset</td>
+<td><strong>Administrator</strong></td>
+<td><strong>Platform</strong></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td><strong>Administrator</strong></td>
+<td><strong>Platform</strong></td>
+</tr>
+<tr>
+<td>Compliance Reminder</td>
+<td><strong>Administrator</strong></td>
+<td><strong>Platform</strong></td>
+</tr>
+<tr>
+<td>Organization Announcement</td>
+<td><strong>Administrator</strong></td>
+<td><strong>Administrator</strong></td>
+</tr>
+</tbody>
+</table>
+<p>After the ownership has been defined, then designing each product and feature would be straightforward as they all have a clearer picture of who is the user and what is their priority.</p>
+<p><img src="/aegis-manage.png" alt="" class="cursor-pointer"></p>
+<hr>
+<h2 id="outcomes">Outcomes</h2>
+<ul>
+<li>
+<p><strong>Protected a $500K+ ARR client RFP</strong> — Redesigned the notification architecture after a major enterprise customer identified email-only notifications as a critical product gap during renewal discussions.</p>
+</li>
+<li>
+<p><strong>Closed a competitive feature gap</strong> — Introduced configurable notification channels and administrator-managed notifications, bringing the platform closer to enterprise expectations and competitor capabilities.</p>
+</li>
+<li>
+<p><strong>Established a scalable communication framework</strong> — Defined reusable patterns for system-generated and administrator-managed notifications, enabling consistent implementation across the product ecosystem.</p>
+</li>
+</ul>
+<p><img src="/aegis-future.jpg" alt="" class="cursor-pointer"></p>
+<h2 id="foundation-for-future-services">Foundation for Future Services</h2>
+<p>The new architecture became the foundation for future platform capabilities and products, including:</p>
+<ul>
+<li>Notification Center</li>
+<li>Reporting</li>
+<li>Notification Scheduling</li>
+<li>Push Notifications for Mobile App</li>
+<li>Cross-product communication</li>
+</ul>
+<p><img src="/aegis-component.jpg" alt="" class="cursor-pointer"></p>
+<hr>
+<blockquote>
+<p>Good enterprise communication isn’t about sending more notifications. It’s about helping people receive the right information at the right time, through the right channel.</p>
+</blockquote>
+</article></div><script>
+        // Back button
+        document.getElementById("back-button").addEventListener("click", () => {
+            window.history.back();
+        });
+
+        // Ensure markdown images using root-relative paths work under a non-root BASE_URL (e.g. GitHub Pages project sites).
+        const base = document.getElementById("work-content")?.getAttribute("data-base-url") || "/";
+        document.querySelectorAll("article img").forEach((img) => {
+            const current = img.getAttribute("src");
+            if (!current) return;
+            if (current.startsWith("http://") || current.startsWith("https://") || current.startsWith("data:")) return;
+            if (current.startsWith(base)) return;
+            if (current.startsWith("/")) {
+                img.setAttribute("src", `${base}${current.replace(/^\/+/, "")}`);
+            }
+        });
+    </script></main><footer class="bg-primary container mx-auto rounded-t-[80px] p-10 space-y-8 site-footer" role="contentinfo" data-astro-cid-jo6i4kqk=""><div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6" data-astro-cid-jo6i4kqk=""><a href="/" data-astro-cid-jo6i4kqk=""><h3 class="heading text-3xl md:text-5xl uppercase" style="color: var(--color-background)" data-astro-cid-jo6i4kqk="">Silvialy Tjhin</h3></a><p class="text-xl lg:text-2xl max-w-[760px]" style="color: var(--color-background)" data-astro-cid-jo6i4kqk="">Craft is the result of good taste implemented through a system.</p></div><div class="flex flex-col sm:flex-row sm:flex-wrap justify-between gap-10" data-astro-cid-jo6i4kqk=""><div data-astro-cid-jo6i4kqk=""><h3 class="mb-2 text-xl text-background" data-astro-cid-jo6i4kqk="">Navigation</h3><ul class="space-y-1 text-secondary nav-links" data-astro-cid-jo6i4kqk=""><li data-astro-cid-jo6i4kqk=""><a href="/" data-astro-cid-jo6i4kqk="">Home</a></li><li data-astro-cid-jo6i4kqk=""><a href="/about" data-astro-cid-jo6i4kqk="">About</a></li><li data-astro-cid-jo6i4kqk=""><a href="/work" data-astro-cid-jo6i4kqk="">Work</a></li><li data-astro-cid-jo6i4kqk=""><a href="/resume" data-astro-cid-jo6i4kqk="">Resume</a></li></ul></div><div data-astro-cid-jo6i4kqk=""><h3 class="mb-2 text-xl text-background" data-astro-cid-jo6i4kqk="">Links</h3><ul class="space-y-1 text-secondary nav-links" data-astro-cid-jo6i4kqk=""><li data-astro-cid-jo6i4kqk=""><a href="/resume" data-astro-cid-jo6i4kqk="">Resume</a></li><li data-astro-cid-jo6i4kqk=""><a href="https://www.linkedin.com/in/silvialy/" data-astro-cid-jo6i4kqk="">Linkedin</a></li><li data-astro-cid-jo6i4kqk=""><a href="https://github.com/stjhin" data-astro-cid-jo6i4kqk="">Github</a></li></ul></div><div data-astro-cid-jo6i4kqk=""><h3 class="mb-2 text-xl text-background" data-astro-cid-jo6i4kqk="">Work</h3><ul class="space-y-1 text-secondary nav-links" data-astro-cid-jo6i4kqk=""><li data-astro-cid-jo6i4kqk=""><a href="/work/aegis" data-astro-cid-jo6i4kqk="">Aegis</a></li><li data-astro-cid-jo6i4kqk=""><a href="/work/aquila" data-astro-cid-jo6i4kqk="">Aquila</a></li><li data-astro-cid-jo6i4kqk=""><a href="/work/infinity" data-astro-cid-jo6i4kqk="">Infinity Design System</a></li></ul></div></div><span class="block text-center text-sm text-background" data-astro-cid-jo6i4kqk="">© Silvialy Tjhin.</span></footer><!-- Reusable site-wide image modal. Include this once (e.g. in Layout.astro). --><div id="image-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-[60] flex items-center justify-center p-6" role="dialog" aria-modal="true"><button id="modal-prev" class="hidden absolute left-4 md:left-6 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75" aria-label="Previous image"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"></path></svg></button><button id="modal-close" class="absolute top-6 right-6 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75" aria-label="Close image"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg></button><img id="modal-img" src="" alt="" class="max-w-full max-h-full object-contain rounded"><button id="modal-next" class="hidden absolute right-4 md:right-6 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75" aria-label="Next image"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></button></div><!-- Tooltip for images --><div id="img-tooltip" class="hidden fixed z-60 bg-black text-white text-sm px-3 py-1 rounded pointer-events-none">View in Fullscreen</div><script>
+    // Generic image modal wiring for any page. It will attach to images matching these selectors:
+    //  - img[data-full]
+    //  - img[data-modalable]
+    //  - img.modal-image
+    //  - img.clickable-hero
+    // This keeps behaviour opt-in; add one of these to an image to enable the modal.
+
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const closeBtn = document.getElementById('modal-close');
+    const prevBtn = document.getElementById('modal-prev');
+    const nextBtn = document.getElementById('modal-next');
+    const tooltip = document.getElementById('img-tooltip');
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    let galleryImages = [];
+    let currentIndex = -1;
+
+    const isWorkDetailPage = () => {
+        // Base-path-safe detection for work detail pages (works for /work/... and /<base>/work/...).
+        if (document.getElementById('work-hero')) return true;
+        return /\/work\/[^/]+\/?$/.test(window.location.pathname);
+    };
+
+    const isGalleryPage = () => isWorkDetailPage();
+
+    const getGalleryHeroId = () => {
+        if (isWorkDetailPage()) return 'work-hero';
+        return null;
+    };
+
+    const updateNavButtons = () => {
+        const showNav = galleryImages.length > 1;
+        if (prevBtn) prevBtn.classList.toggle('hidden', !showNav);
+        if (nextBtn) nextBtn.classList.toggle('hidden', !showNav);
+    };
+
+    const showImageAt = (index) => {
+        if (!galleryImages.length || !modalImg) return;
+        const normalized = (index + galleryImages.length) % galleryImages.length;
+        currentIndex = normalized;
+        const img = galleryImages[normalized];
+        modalImg.src = img.dataset.full || img.src;
+        modalImg.alt = img.alt || '';
+        updateNavButtons();
+    };
+
+    const openModalForImage = (img) => {
+        if (!modal || !modalImg) return;
+        modal.classList.remove('hidden');
+
+        // Determine gallery set: for work detail pages, include hero + all article images.
+        if (isGalleryPage()) {
+            const heroSelector = getGalleryHeroId();
+            const hero = heroSelector ? document.getElementById(heroSelector) : null;
+            const articleImgs = Array.from(document.querySelectorAll('article img')).filter((i) => i.id !== 'modal-img');
+            const set = [hero, ...articleImgs].filter(Boolean);
+            galleryImages = Array.from(new Set(set));
+        } else {
+            galleryImages = [img];
+        }
+
+        const clickedIndex = galleryImages.indexOf(img);
+        showImageAt(clickedIndex >= 0 ? clickedIndex : 0);
+
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        if (closeBtn) closeBtn.focus();
+    };
+
+    const closeModal = () => {
+        if (!modal || !modalImg) return;
+        modal.classList.add('hidden');
+        modalImg.src = '';
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        galleryImages = [];
+        currentIndex = -1;
+        updateNavButtons();
+    };
+
+    const showPrev = () => showImageAt(currentIndex - 1);
+    const showNext = () => showImageAt(currentIndex + 1);
+
+    const isModalImageCandidate = (img) => {
+        if (!(img instanceof HTMLImageElement)) return false;
+        if (img.id === 'modal-img') return false;
+
+        const isOptIn = img.matches('img[data-full], img[data-modalable], img.modal-image, img.clickable-hero');
+        const isProjectImage = isGalleryPage() && (img.matches('#work-hero') || !!img.closest('article'));
+
+        return isOptIn || isProjectImage;
+    };
+
+    // Wire up images that opt-in
+    const attachImageModal = () => {
+        const galleryImgs = isGalleryPage()
+            ? Array.from(document.querySelectorAll('#work-hero, article img'))
+            : [];
+
+        const optInImgs = Array.from(document.querySelectorAll('img[data-full], img[data-modalable], img.modal-image, img.clickable-hero'));
+        const imgs = Array.from(new Set([...galleryImgs, ...optInImgs]));
+
+        imgs.forEach((img) => {
+            if (img.id === 'modal-img') return; // skip nested modal image if any
+            img.classList.add('cursor-pointer');
+            if (!isTouch) {
+                img.addEventListener('mouseenter', (e) => showTooltip(e));
+                img.addEventListener('mousemove', (e) => moveTooltip(e));
+                img.addEventListener('mouseleave', hideTooltip);
+            }
+        });
+    };
+
+    // Delegated click handler is more reliable when images are injected or rewritten after load.
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (!(target instanceof Element)) return;
+
+        const img = target.closest('img');
+        if (!isModalImageCandidate(img)) return;
+
+        openModalForImage(img);
+    });
+
+    // Close handlers
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (prevBtn) prevBtn.addEventListener('click', showPrev);
+    if (nextBtn) nextBtn.addEventListener('click', showNext);
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    }
+    document.addEventListener('keydown', (e) => {
+        if (!modal || modal.classList.contains('hidden')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft' && galleryImages.length > 1) showPrev();
+        if (e.key === 'ArrowRight' && galleryImages.length > 1) showNext();
+    });
+
+    // Tooltip helpers
+    function showTooltip(e) {
+        if (!tooltip || isTouch) return;
+        tooltip.classList.remove('hidden');
+        moveTooltip(e);
+    }
+
+    function moveTooltip(e) {
+        if (!tooltip || isTouch) return;
+        const padding = 12;
+        let x = e.clientX + padding;
+        let y = e.clientY + padding;
+        const rect = tooltip.getBoundingClientRect();
+        if (x + rect.width > window.innerWidth) x = e.clientX - rect.width - padding;
+        if (y + rect.height > window.innerHeight) y = e.clientY - rect.height - padding;
+        tooltip.style.left = x + 'px';
+        tooltip.style.top = y + 'px';
+    }
+
+    function hideTooltip() {
+        if (!tooltip) return;
+        tooltip.classList.add('hidden');
+    }
+
+    // Attach after DOM is ready. If content is injected later, re-run attachImageModal.
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', attachImageModal);
+    } else {
+        attachImageModal();
+    }
+</script><button id="scroll-to-top" class="scroll-btn fixed bottom-24 right-6 z-40 w-10 h-10 rounded-full bg-background/70 border border-secondary/30 text-foreground flex items-center justify-center opacity-0 translate-y-2 pointer-events-none transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary visible" title="Scroll to Top" aria-label="Scroll to Top" data-astro-cid-nfluvhd2=""><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-nfluvhd2=""><polyline points="18 15 12 9 6 15" data-astro-cid-nfluvhd2=""></polyline></svg></button><button id="scroll-to-bottom" class="scroll-btn fixed bottom-10 right-6 z-40 w-10 h-10 rounded-full bg-background/70 border border-secondary/30 text-foreground flex items-center justify-center opacity-0 translate-y-2 pointer-events-none transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary visible" title="Scroll to Bottom" aria-label="Scroll to Bottom" data-astro-cid-nfluvhd2=""><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-nfluvhd2=""><polyline points="6 9 12 15 18 9" data-astro-cid-nfluvhd2=""></polyline></svg></button><script type="module">var e=document.getElementById(`scroll-to-top`),t=document.getElementById(`scroll-to-bottom`);function n(){let n=window.scrollY,r=document.documentElement.scrollHeight-window.innerHeight,i=n>300;e?.classList.toggle(`visible`,i),t?.classList.toggle(`visible`,i&&n<r-100)}e?.addEventListener(`click`,()=>window.scrollTo({top:0,behavior:`smooth`})),t?.addEventListener(`click`,()=>window.scrollTo({top:document.documentElement.scrollHeight,behavior:`smooth`})),window.addEventListener(`scroll`,n,{passive:!0}),n();</script><script data-goatcounter="https://stjhin.goatcounter.com/count" data-goatcounter-settings="{&quot;allow_local&quot;: true}" async="" src="//gc.zgo.at/count.js"></script><script>
+window.addEventListener('load', () => {
+  const report = [];
+  const vw = window.innerWidth;
+  report.push('VIEWPORT ' + vw + 'x' + window.innerHeight);
+
+  // disable smooth scroll for instant positioning
+  document.documentElement.style.scrollBehavior = 'auto';
+
+  const tables = document.querySelectorAll('article table');
+  report.push('TABLE COUNT: ' + tables.length);
+
+  // ancestor overflow audit for table[2]
+  const t2 = tables[2];
+  let anc = t2.parentElement;
+  while (anc) {
+    const cs = getComputedStyle(anc);
+    const tag = anc.tagName + (anc.id ? '#' + anc.id : '') + '.' + String(anc.className).split(' ').slice(0,3).join('.');
+    report.push('ANCESTOR ' + tag + ' overflow=' + cs.overflow + ' overflowX=' + cs.overflowX + ' position=' + cs.position + ' zIndex=' + cs.zIndex + ' visibility=' + cs.visibility);
+    anc = anc.parentElement;
+  }
+
+  // hit-test each table at several points
+  tables.forEach((t, i) => {
+    window.scrollTo(0, t.offsetTop - 40);
+    const r = t.getBoundingClientRect();
+    report.push('--- table[' + i + '] rectTop=' + Math.round(r.top) + ' rectH=' + Math.round(r.height) + ' rectW=' + Math.round(r.width));
+    const rows = t.querySelectorAll('tr');
+    const pts = [];
+    if (rows.length > 0) {
+      const hr = rows[0].getBoundingClientRect();
+      const br = rows[1] ? rows[1].getBoundingClientRect() : null;
+      for (const frac of [0.2, 0.5, 0.8]) {
+        pts.push(['hdr', frac, hr.x + hr.width * frac, hr.y + hr.height / 2]);
+        if (br) pts.push(['row', frac, br.x + br.width * frac, br.y + br.height / 2]);
+      }
+    }
+    for (const [label, frac, px, py] of pts) {
+      if (py < 0 || py > window.innerHeight || px < 0 || px > vw) { report.push('  skip ' + label + '@' + frac + ' offscreen'); continue; }
+      const el = document.elementFromPoint(px, py);
+      const hit = el ? (el.tagName + (el.id ? '#' + el.id : '') + '.' + String(el.className).slice(0, 30)) : 'NULL';
+      report.push('  ' + label + '@' + frac + ' (' + Math.round(px) + ',' + Math.round(py) + ') -> ' + hit);
+    }
+  });
+
+  // canvas pixel probe: paint table[2] row region via drawing? Not possible; skip.
+
+  const pre = document.createElement('pre');
+  pre.id = 'inspect-report';
+  pre.style.cssText = 'position:fixed;top:0;left:0;background:#fff;color:#000;z-index:999999;font-size:11px;line-height:1.4;max-height:80vh;overflow:auto;white-space:pre-wrap;border:2px solid red;';
+  pre.textContent = report.join(String.fromCharCode(10));
+  document.body.appendChild(pre);
+});
+</script><pre id="inspect-report" style="position: fixed; top: 0px; left: 0px; background: rgb(255, 255, 255); color: rgb(0, 0, 0); z-index: 999999; font-size: 11px; line-height: 1.4; max-height: 80vh; overflow: auto; white-space: pre-wrap; border: 2px solid red;">VIEWPORT 1264x905
+TABLE COUNT: 3
+ANCESTOR ARTICLE#work-content.px-3.flex-2.mx-auto overflow=visible overflowX=visible position=static zIndex=auto visibility=visible
+ANCESTOR DIV.container.mx-auto.space-y-8 overflow=visible overflowX=visible position=static zIndex=auto visibility=visible
+ANCESTOR MAIN#main-content.min-h-screen.w-full.relative overflow=visible overflowX=visible position=relative zIndex=auto visibility=visible
+ANCESTOR BODY. overflow=visible overflowX=visible position=static zIndex=auto visibility=visible
+ANCESTOR HTML.dark overflow=visible overflowX=visible position=static zIndex=auto visibility=visible
+--- table[0] rectTop=40 rectH=177 rectW=882
+  hdr@0.2 (360,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.2 (360,106) -&gt; TD.
+  hdr@0.5 (624,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.5 (624,106) -&gt; TD.
+  hdr@0.8 (889,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.8 (889,106) -&gt; TD.
+--- table[1] rectTop=40 rectH=265 rectW=882
+  hdr@0.2 (360,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.2 (360,106) -&gt; TD.
+  hdr@0.5 (624,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.5 (624,106) -&gt; TD.
+  hdr@0.8 (889,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.8 (889,106) -&gt; TD.
+--- table[2] rectTop=40 rectH=221 rectW=882
+  hdr@0.2 (360,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.2 (360,107) -&gt; TD.
+  hdr@0.5 (624,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.5 (624,107) -&gt; STRONG.
+  hdr@0.8 (889,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.8 (889,107) -&gt; STRONG.</pre></body></html>

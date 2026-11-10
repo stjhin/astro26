@@ -15,12 +15,10 @@ impacts:
   - label: "Time Saved"
     value: "40%"
 summary:
-  - "Led product design across 5 logistics products spanning web and mobile."
-  - "Simplified digital workflows for first-time enterprise users."
-  - "Built a scalable design system supporting multiple platforms."
-  - "Reached 100K+ users with 75% repeat usage."
-  - "Reduced task completion time by approximately 40%."
-  - "The challenge wasn't digitizing logistics. It was making digital workflows feel faster than paper."
+  - "Problem: Led product design across five logistics products on web and mobile, simplifying workflows for first-time enterprise users transitioning from paper-based processes."
+  - "Design Approach: Built a scalable design system to create consistent experiences across products and platforms, while making digital workflows easier and faster to navigate."
+  - "Impact: Reached 100K+ users, achieved 75% repeat usage, and reduced task completion time by approximately 40%."
+  - "Key Insight: The challenge wasn't digitizing logistics. It was making digital workflows feel faster than paper."
 ---
 
 ## Overview

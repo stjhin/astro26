@@ -1,0 +1,26 @@
+﻿VIEWPORT 500x749
+TABLE COUNT: 3
+==== MODE: dark (html.dark=true)
+--- table[0] display=block overflowX=auto w=413 h=381
+    th computed: color=rgb(230, 230, 235) borderBottom=2px rgb(120, 130, 150) visibility=visible opacity=1
+    td computed: color=rgb(230, 230, 235) borderBottom=1px rgb(130, 140, 160) visibility=visible opacity=1
+--- table[1] display=block overflowX=auto w=413 h=616
+    th computed: color=rgb(230, 230, 235) borderBottom=2px rgb(120, 130, 150) visibility=visible opacity=1
+    td computed: color=rgb(230, 230, 235) borderBottom=1px rgb(130, 140, 160) visibility=visible opacity=1
+--- table[2] display=block overflowX=auto w=413 h=275
+    th computed: color=rgb(230, 230, 235) borderBottom=2px rgb(120, 130, 150) visibility=visible opacity=1
+    td computed: color=rgb(230, 230, 235) borderBottom=1px rgb(130, 140, 160) visibility=visible opacity=1
+    -- table[2] (before/after) matched rules on thead th:
+    -- matched rules on tbody td:
+==== MODE: light (html.dark=false)
+--- table[0] display=block overflowX=auto w=413 h=381
+    th computed: color=rgb(0, 7, 27) borderBottom=2px rgb(96, 115, 142) visibility=visible opacity=1
+    td computed: color=rgb(0, 7, 27) borderBottom=1px rgb(100, 115, 140) visibility=visible opacity=1
+--- table[1] display=block overflowX=auto w=413 h=616
+    th computed: color=rgb(0, 7, 27) borderBottom=2px rgb(96, 115, 142) visibility=visible opacity=1
+    td computed: color=rgb(0, 7, 27) borderBottom=1px rgb(100, 115, 140) visibility=visible opacity=1
+--- table[2] display=block overflowX=auto w=413 h=275
+    th computed: color=rgb(0, 7, 27) borderBottom=2px rgb(96, 115, 142) visibility=visible opacity=1
+    td computed: color=rgb(0, 7, 27) borderBottom=1px rgb(100, 115, 140) visibility=visible opacity=1
+    -- table[2] (before/after) matched rules on thead th:
+    -- matched rules on tbody td:

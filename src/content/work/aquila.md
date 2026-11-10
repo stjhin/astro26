@@ -18,11 +18,11 @@ impacts:
   - label: "WCAG Level"
     value: "AA"
 summary:
-  - "Designed a reusable interaction framework for enterprise AI products."
-  - "Synthesized research from Human-AI Interaction, Responsible AI, and accessibility guidelines."
-  - "Created reusable patterns for trust, explainability, governance, and AI-assisted workflows."
-  - "Demonstrated how AI interactions can scale beyond chat interfaces."
-  - "The challenge wasn't adding AI to products. It was helping users trust AI decisions."
+  - "Problem / Assumption: The challenge wasn't adding AI capabilities to products. It was designing interactions that help users understand, evaluate, and confidently work with AI."
+  - "Design Decision: Synthesized principles from Human-AI Interaction, Responsible AI, and accessibility research into a reusable interaction framework for enterprise AI products."
+  - "Design Principles: Established reusable patterns for trust, explainability, governance, and AI-assisted workflows, extending AI interaction beyond conventional chat interfaces."
+  - "Outcome: Demonstrated how a consistent interaction framework could support scalable, responsible AI experiences across enterprise products."
+  - "Key Insight: Trust in AI isn't created through explanations alone. It requires designing the entire interaction around user understanding, control, and confidence."
 ---
 
 ## Overview

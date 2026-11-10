@@ -1,0 +1,102 @@
+﻿TABLE COUNT: 3
+-----
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Owner</th>
+<th>Responsibility</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><strong>Platform</strong></td>
+<td>System-generated notifications</td>
+<td>Password reset, authentication, compliance</td>
+</tr>
+<tr>
+<td>1</td>
+<td><strong>Administrator</strong></td>
+<td>Organization notifications</td>
+<td>Announcements, scheduled reminders, campaigns</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>End User</strong></td>
+<td>Receives both</td>
+<td>Unified notification experience</td>
+</tr>
+</tbody>
+</table>
+-----
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Priority Level</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modal</td>
+<td>Time-Sensitive</td>
+<td>Critical events that require immediate action</td>
+</tr>
+<tr>
+<td>Alert Banner</td>
+<td>Immediate</td>
+<td>High-priority information that should remain visibly persistent</td>
+</tr>
+<tr>
+<td>Toast</td>
+<td>High</td>
+<td>Immediate confirmation or short-lived status updates</td>
+</tr>
+<tr>
+<td>Notification Center Drawer</td>
+<td>Medium</td>
+<td>Persistent messages and activity history</td>
+</tr>
+<tr>
+<td>Badge</td>
+<td>Low</td>
+<td>Passive awareness of unread notifications</td>
+</tr>
+</tbody>
+</table>
+-----
+<table>
+<thead>
+<tr>
+<th>Notifications</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Password Reset</td>
+<td><strong>Administrator</strong></td>
+<td><strong>Platform</strong></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td><strong>Administrator</strong></td>
+<td><strong>Platform</strong></td>
+</tr>
+<tr>
+<td>Compliance Reminder</td>
+<td><strong>Administrator</strong></td>
+<td><strong>Platform</strong></td>
+</tr>
+<tr>
+<td>Organization Announcement</td>
+<td><strong>Administrator</strong></td>
+<td><strong>Administrator</strong></td>
+</tr>
+</tbody>
+</table>
+

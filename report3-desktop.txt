@@ -1,0 +1,28 @@
+﻿VIEWPORT 1264x905
+TABLE COUNT: 3
+ANCESTOR ARTICLE#work-content.px-3.flex-2.mx-auto overflow=visible overflowX=visible position=static zIndex=auto visibility=visible
+ANCESTOR DIV.container.mx-auto.space-y-8 overflow=visible overflowX=visible position=static zIndex=auto visibility=visible
+ANCESTOR MAIN#main-content.min-h-screen.w-full.relative overflow=visible overflowX=visible position=relative zIndex=auto visibility=visible
+ANCESTOR BODY. overflow=visible overflowX=visible position=static zIndex=auto visibility=visible
+ANCESTOR HTML.dark overflow=visible overflowX=visible position=static zIndex=auto visibility=visible
+--- table[0] rectTop=40 rectH=177 rectW=882
+  hdr@0.2 (360,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.2 (360,106) -&gt; TD.
+  hdr@0.5 (624,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.5 (624,106) -&gt; TD.
+  hdr@0.8 (889,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.8 (889,106) -&gt; TD.
+--- table[1] rectTop=40 rectH=265 rectW=882
+  hdr@0.2 (360,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.2 (360,106) -&gt; TD.
+  hdr@0.5 (624,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.5 (624,106) -&gt; TD.
+  hdr@0.8 (889,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.8 (889,106) -&gt; TD.
+--- table[2] rectTop=40 rectH=221 rectW=882
+  hdr@0.2 (360,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.2 (360,107) -&gt; TD.
+  hdr@0.5 (624,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.5 (624,107) -&gt; STRONG.
+  hdr@0.8 (889,62) -&gt; DIV.container mx-auto flex items-c
+  row@0.8 (889,107) -&gt; STRONG.

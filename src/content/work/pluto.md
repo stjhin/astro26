@@ -18,11 +18,11 @@ impacts:
   - label: "Efficiency"
     value: "+85%"
 summary:
-  - "Led product design for a drone logistics platform transitioning from MVP to beta."
-  - "Developed a staged validation strategy to safely test autonomous delivery."
-  - "Identified user trust, rather than drone technology, as the primary adoption barrier."
-  - "Supported 30K+ deliveries, reducing failed deliveries by 50% while improving operational efficiency by 85%."
-  - "The challenge wasn't flying drones. It was earning people's trust in autonomous delivery."
+  - "Problem: Led product design for a drone logistics platform transitioning from MVP to beta."
+  - "Design Approach: Developed a staged validation strategy to safely test autonomous delivery."
+  - "Key Insight: Identified user trust, rather than drone technology, as the primary adoption barrier."
+  - "Impact: Supported 30K+ deliveries, reducing failed deliveries by 50% while improving operational efficiency by 85%."
+  - "Key Takeaway: The challenge wasn't flying drones. It was earning people's trust in autonomous delivery."
 ---
 
 ## Overview

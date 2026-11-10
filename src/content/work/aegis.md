@@ -16,11 +16,11 @@ impacts:
     value: "4"
 summary:
   - "Redesigned the notification architecture for an enterprise ecosystem of 40+ applications."
-  - "Reframed a feature request for mobile push notifications into a scalable communication architecture."
-  - "Introduced a distinction between System-managed and Administrator-managed notifications."
-  - "Protected a $500K+ ARR enterprise renewal by closing a competitive feature gap."
-  - "Established reusable communication patterns for future products across the platform."
-  - "The real problem wasn't adding mobile push notifications. It was redesigning how enterprise communication worked across an ecosystem."
+  - "Problem/Assumption: The request for mobile push notifications exposed a larger problem: fragmented communication architecture across an ecosystem of 40+ enterprise applications."
+  - "Design Decision: Reframed the feature request into a platform-level communication architecture, introducing a distinction between System-managed and Administrator-managed notifications."
+  - "Trade-off: Balanced platform-wide consistency and governance against the flexibility administrators needed for client-specific notification configurations."
+  - "Business Impact: Protected a $500K+ ARR enterprise renewal by closing a competitive feature gap and established reusable communication patterns for future products."
+  - "Key Insight: The problem wasn't adding mobile push notifications. It was redesigning how enterprise communication worked across the ecosystem."
 ---
 
 ## Overview
@@ -285,6 +285,8 @@ After the ownership has been defined, then designing each product and feature wo
 
 - **Established a scalable communication framework** — Defined reusable patterns for system-generated and administrator-managed notifications, enabling consistent implementation across the product ecosystem.
 
+![](/aegis-future.jpg)
+
 ## Foundation for Future Services
 
 The new architecture became the foundation for future platform capabilities and products, including:
@@ -295,7 +297,7 @@ The new architecture became the foundation for future platform capabilities and 
 - Push Notifications for Mobile App
 - Cross-product communication
 
-![](/aegis-future.jpg)
+![](/aegis-component.jpg)
 
 ---
 
